@@ -1,0 +1,43 @@
+{
+  "grammars": [
+    {
+      "name": "ca65",
+      "camelcase": "CA65",
+      "scope": "source.ca65",
+      "path": ".",
+      "file-types": [
+        "asm",
+        "s",
+        "inc",
+        "ca65"
+      ],
+      "highlights": "queries/highlights.scm",
+      "injection-regex": "ca65"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "CA65 grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "LLeny"
+      },
+      {
+        "name": "bgevko"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/bgevko/tree-sitter-ca65"
+    }
+  },
+  "bindings": {
+    "c": false,
+    "go": false,
+    "node": false,
+    "python": false,
+    "rust": true,
+    "swift": false,
+    "zig": false
+  }
+}

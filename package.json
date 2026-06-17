@@ -5,7 +5,8 @@
   "main": "grammar.js",
   "scripts": {
     "generate": "tree-sitter generate",
-    "test": "tree-sitter test"
+    "test": "tree-sitter test",
+    "test:highlight": "tree-sitter highlight --check test/highlight/basic.asm"
   },
   "author": "",
   "license": "MIT",
@@ -15,20 +16,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bgevko/tree-sitter-ca65.git"
-  },
-  "tree-sitter": [
-    {
-      "scope": "source.ca65",
-      "file-types": [
-        "asm",
-        "s",
-        "inc",
-        "ca65"
-      ],
-      "injection-regex": "ca65",
-      "highlights": [
-        "queries/highlights.scm"
-      ]
-    }
-  ]
+  }
 }
