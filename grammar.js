@@ -53,12 +53,12 @@ module.exports = grammar({
 
     _statement: $ => choice(
       $.label,
-      seq(
+      prec.right(1, seq(
         $.mnemonic,
         optional(
           $.operand
         )
-      ),
+      )),
       prec(1, seq(
         $.label,
         $.mnemonic,
@@ -93,8 +93,7 @@ module.exports = grammar({
     ),
 
     mem_address: $ => choice(
-      seq(':+', repeat('+')),
-      seq(':-', repeat('-')),
+      $.unnamed_label_ref,
       repeat1(
         choice(
           $.base,
@@ -123,7 +122,7 @@ module.exports = grammar({
           choice('near', 'far', 'huge', 'NEAR', 'FAR', 'HUGE')
         )
       ),
-      repeat(choice($._newline, $._statement)),
+      repeat(choice($._newline, seq($._statement, $._newline))),
       $.procend
     ),
 
@@ -133,7 +132,7 @@ module.exports = grammar({
       $.macrostart, 
       $.identifier,
       repeatSep($.identifier, $.separator),
-      repeat(choice($._newline, $._statement)),
+      repeat(choice($._newline, seq($._statement, $._newline))),
       $.macroend
     ),
 
@@ -166,7 +165,7 @@ module.exports = grammar({
 
     value: $ => seq(
       $.valuetag,
-      repeat(
+      repeat1(
         choice(
           $.base, 
           $.number, 
@@ -198,8 +197,14 @@ module.exports = grammar({
     valuetag: $ => token('#'),
     equal: $ => token('='),
     anything: $ => /.+/,
-    label: $ => /@{0,1}[a-zA-Z0-9_]*:/, 
+    label: $ => choice(
+      prec(1, seq(choice($.identifier, $.local_identifier), ':')),
+      $.unnamed_label
+    ),
+    unnamed_label: $ => ':',
+    unnamed_label_ref: $ => seq(':', choice(repeat1('+'), repeat1('-'))),
     number: $ => /[0-9a-fA-F]+/,
+    local_identifier: $ => /@[a-zA-Z_][a-zA-Z0-9_]*/,
     identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
     preproccmd: $ => /\.[a-zA-Z_]+/,
     comment: $ => /;.*/,

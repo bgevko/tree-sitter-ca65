@@ -6,7 +6,8 @@ label1:
 
 ---
 (source_file
-  (label)
+  (label
+    (identifier))
   (mnemonic)
   (operand
     (mem_address
@@ -20,7 +21,8 @@ label local
 
 ---
 (source_file
-  (label)
+  (label
+    (local_identifier))
   (mnemonic)
   (operand
     (value
@@ -35,10 +37,12 @@ label unnamed -
 
 ---
 (source_file
-  (label)
+  (label
+    (unnamed_label))
   (mnemonic)
   (operand
-    (mem_address)))
+    (mem_address
+      (unnamed_label_ref))))
 
 =================
 label unnamed +
@@ -50,8 +54,10 @@ label unnamed +
 (source_file
   (mnemonic)
   (operand
-    (mem_address))
-  (label)
+    (mem_address
+      (unnamed_label_ref)))
+  (label
+    (unnamed_label))
   (mnemonic)
   (operand
     (value
@@ -67,7 +73,8 @@ label unnamed +++
 (source_file
   (mnemonic)
   (operand
-    (mem_address)))
+    (mem_address
+      (unnamed_label_ref))))
 
 =================
 label unnamed -- 
@@ -78,7 +85,8 @@ label unnamed --
 (source_file
   (mnemonic)
   (operand
-    (mem_address)))
+    (mem_address
+      (unnamed_label_ref))))
 
 =================
 label same line
@@ -88,16 +96,17 @@ label2: lda #03
 
 ---
 (source_file
-  (label)
+  (label
+    (identifier))
   (mnemonic)
   (operand
     (value
       (valuetag)
       (number)))
-  (label)
+  (label
+    (identifier))
   (mnemonic)
   (operand
     (value
        (valuetag)
        (number))))
-

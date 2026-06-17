@@ -14,7 +14,8 @@ reset:
   (preprocgen
     (preproccmd)
     (string))
-  (label)
+  (label
+    (identifier))
   (mnemonic)
   (operand
     (value

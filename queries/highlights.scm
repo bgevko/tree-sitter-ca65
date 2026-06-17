@@ -21,7 +21,10 @@
 (char) @string
 (number) @number
 (comment) @comment
-(label) @tag
+(label (identifier) @tag)
+(label (local_identifier) @tag)
+(label (unnamed_label) @tag)
+(unnamed_label_ref) @tag
 (operator) @operator
 (separator) @punctuation.delimiter
 (bracket) @punctuation.bracket
