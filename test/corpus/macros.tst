@@ -6,6 +6,7 @@ macro no arg
 .endmacro
 
 ---
+
 (source_file
   (macro
     (macrostart)
@@ -26,6 +27,7 @@ macro args
 .endmacro
 
 ---
+
 (source_file
   (macro
     (macrostart)
@@ -51,6 +53,7 @@ macro short
 .endmac
 
 ---
+
 (source_file
   (macro
     (macrostart)
@@ -61,4 +64,3 @@ macro short
         (valuetag)
         (number)))
     (macroend)))
-

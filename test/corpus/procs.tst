@@ -6,6 +6,7 @@ proc base
 .endproc
 
 ---
+
 (source_file
   (proc
     (procstart)
@@ -25,6 +26,7 @@ proc near
 .endproc
 
 ---
+
 (source_file
   (proc
     (procstart)

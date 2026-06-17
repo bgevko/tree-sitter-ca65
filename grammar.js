@@ -33,23 +33,25 @@ module.exports = grammar({
   name: 'ca65',
 
   extras: $ => [
-    /\s+/,
+    /[ \t\r]+/,
     $.comment,
     $.string,
     $.char
   ],
 
   rules: {
-    source_file: $ => repeat($._line),
-    
-    _line: $ => seq(
-      choice(
-        $._statement,
-        $._preproc,
-        $.equ
-      ),
-      /\r?\n/
+    source_file: $ => seq(
+      repeat(choice($._newline, seq($._item, $._newline))),
+      optional($._item)
     ),
+
+    _item: $ => choice(
+      $._statement,
+      $._preproc,
+      $.equ
+    ),
+
+    _newline: $ => /\r?\n/,
 
     _statement: $ => choice(
       $.label,
@@ -121,7 +123,7 @@ module.exports = grammar({
           choice('near', 'far', 'huge', 'NEAR', 'FAR', 'HUGE')
         )
       ),
-      repeat1($._statement),
+      repeat(choice($._newline, $._statement)),
       $.procend
     ),
 
@@ -131,7 +133,7 @@ module.exports = grammar({
       $.macrostart, 
       $.identifier,
       repeatSep($.identifier, $.separator),
-      repeat1($._statement),
+      repeat(choice($._newline, $._statement)),
       $.macroend
     ),
 
