@@ -22,7 +22,7 @@
 | Symbols and scopes | `test/corpus/symbols-scopes.tst` | FAIL | 0/3 pass. Failing areas: cheap local references, explicit scope access, `.set`, and `:=`. |
 | Macros and control | `test/corpus/macros-control.tst` | FAIL | 1/3 pass. Failing areas: macro bodies with `.local` and conditional assembly expected tree shape. |
 | Structs, unions, enums | `test/corpus/structs-unions.tst` | FAIL | 0/3 pass. Current parser produces recoverable directive lines, but expected trees do not match aggregate constructs. |
-| CPU modes | `test/corpus/cpu-modes.tst` | FAIL | 1/2 pass. Failing area: processor mode directives with digits in directive names. |
+| CPU modes | `test/corpus/cpu-modes.tst` | PASS | 2/2 pass. Covers processor mode directives and representative 65C02/65816 mnemonics. |
 | Highlight coverage | `test/highlight/coverage.asm` | PASS | Broad highlight fixture passes with standard captures. |
 
 ## Final Test Run
