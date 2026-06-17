@@ -24,9 +24,6 @@ const
   ],
   brackets = [
     '(', ')', '[', ']', '{', '}'
-  ],
-  separators = [
-    ','
   ];
 
 module.exports = grammar({
@@ -190,9 +187,7 @@ module.exports = grammar({
       choice(...brackets)
     ),
 
-    separator: $ => token(
-      choice(...separators)
-    ),
+    separator: $ => token(','),
 
     valuetag: $ => token('#'),
     equal: $ => token('='),

@@ -1738,13 +1738,8 @@
     "separator": {
       "type": "TOKEN",
       "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "STRING",
-            "value": ","
-          }
-        ]
+        "type": "STRING",
+        "value": ","
       }
     },
     "valuetag": {
