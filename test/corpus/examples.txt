@@ -1,0 +1,29 @@
+==================
+basic ca65 example
+==================
+.segment "CODE"
+
+reset:
+    lda #$00
+    sta $0200
+    rts
+
+---
+
+(source_file
+  (preprocgen
+    (preproccmd)
+    (string))
+  (label)
+  (mnemonic)
+  (operand
+    (value
+      (valuetag)
+      (base)
+      (number)))
+  (mnemonic)
+  (operand
+    (mem_address
+      (base)
+      (number)))
+  (mnemonic))
