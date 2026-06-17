@@ -31,6 +31,9 @@ module.exports = grammar({
 
   conflicts: $ => [
     [$.operand, $.mem_address],
+    [$.macro, $.generic_line],
+    [$.preprocgen, $.directive_line],
+    [$.generic_line],
   ],
 
   extras: $ => [
@@ -45,7 +48,9 @@ module.exports = grammar({
     ),
 
     _item: $ => choice(
+      $.directive_line,
       $._statement,
+      $.generic_line,
       $._preproc,
       $.equ
     ),
@@ -119,19 +124,19 @@ module.exports = grammar({
           choice('near', 'far', 'huge', 'NEAR', 'FAR', 'HUGE')
         )
       ),
-      repeat(choice($._newline, seq($._statement, $._newline))),
+      repeat(choice($._newline, seq(choice($.directive_line, $._statement, $.generic_line, $._preproc, $.equ), $._newline))),
       $.procend
     ),
 
     macrostart: $ => token(choice('.macro', '.mac', '.MACRO', '.MAC')),
     macroend: $ => token(choice('.endmacro', '.endmac', '.ENDMACRO', '.ENDMAC')),
-    macro: $ => seq(
+    macro: $ => prec(1, seq(
       $.macrostart, 
       $.identifier,
       repeatSep($.identifier, $.separator),
-      repeat(choice($._newline, seq($._statement, $._newline))),
+      repeat(choice($._newline, seq(choice($.directive_line, $._statement, $.generic_line, $._preproc, $.equ), $._newline))),
       $.macroend
-    ),
+    )),
 
     preprocgen: $ => seq(
       $.preproccmd,
@@ -144,6 +149,45 @@ module.exports = grammar({
           $.operator,
           $.bracket,
           $.separator
+        )
+      )
+    ),
+
+    directive_line: $ => seq(
+      choice($.identifier, $.local_identifier, $.label),
+      choice(
+        $.preproccmd,
+        $.operator
+      ),
+      repeat(
+        choice(
+          $.preproccmd,
+          $.number,
+          $.string,
+          $.identifier,
+          $.local_identifier,
+          $.base,
+          $.operator,
+          $.bracket,
+          $.separator,
+          $.char
+        )
+      )
+    ),
+
+    generic_line: $ => seq(
+      choice($.identifier, $.local_identifier),
+      repeat(
+        choice(
+          $.identifier,
+          $.local_identifier,
+          $.register,
+          $.number,
+          $.string,
+          $.base,
+          $.bracket,
+          $.separator,
+          $.char
         )
       )
     ),

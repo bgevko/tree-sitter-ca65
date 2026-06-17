@@ -66,5 +66,5 @@ io := $d000
 (source_file
   (equ (identifier) (equal) (anything))
   (equ (identifier) (equal) (anything))
-  (preprocgen (identifier) (preproccmd) (number))
-  (preprocgen (identifier) (operator) (equal) (base) (number)))
+  (directive_line (identifier) (preproccmd) (number))
+  (directive_line (label (identifier)) (operator) (base) (number)))

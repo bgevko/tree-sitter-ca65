@@ -10,8 +10,8 @@ struct definition
 
 (source_file
   (preprocgen (preproccmd) (identifier))
-  (preprocgen (identifier) (preproccmd))
-  (preprocgen (identifier) (preproccmd))
+  (directive_line (identifier) (preproccmd))
+  (directive_line (identifier) (preproccmd))
   (preprocgen (preproccmd)))
 
 ====================
@@ -28,11 +28,10 @@ item: .tag Value
 
 (source_file
   (preprocgen (preproccmd) (identifier))
-  (preprocgen (identifier) (preproccmd))
-  (preprocgen (identifier) (preproccmd))
+  (directive_line (identifier) (preproccmd))
+  (directive_line (identifier) (preproccmd))
   (preprocgen (preproccmd))
-  (label (identifier))
-  (preprocgen (preproccmd) (identifier)))
+  (directive_line (label (identifier)) (preproccmd) (identifier)))
 
 ====================
 enum values
@@ -46,6 +45,6 @@ enum values
 
 (source_file
   (preprocgen (preproccmd) (identifier))
-  (preprocgen (identifier))
-  (preprocgen (identifier))
+  (generic_line (identifier))
+  (generic_line (identifier))
   (preprocgen (preproccmd)))

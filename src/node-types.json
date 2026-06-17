@@ -1,5 +1,60 @@
 [
   {
+    "type": "directive_line",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "base",
+          "named": true
+        },
+        {
+          "type": "bracket",
+          "named": true
+        },
+        {
+          "type": "char",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "label",
+          "named": true
+        },
+        {
+          "type": "local_identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "preproccmd",
+          "named": true
+        },
+        {
+          "type": "separator",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "equ",
     "named": true,
     "fields": {
@@ -36,6 +91,53 @@
     }
   },
   {
+    "type": "generic_line",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "base",
+          "named": true
+        },
+        {
+          "type": "bracket",
+          "named": true
+        },
+        {
+          "type": "char",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "local_identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "register",
+          "named": true
+        },
+        {
+          "type": "separator",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "label",
     "named": true,
     "fields": {},
@@ -67,11 +169,27 @@
       "required": true,
       "types": [
         {
+          "type": "directive_line",
+          "named": true
+        },
+        {
+          "type": "equ",
+          "named": true
+        },
+        {
+          "type": "generic_line",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
         {
           "type": "label",
+          "named": true
+        },
+        {
+          "type": "macro",
           "named": true
         },
         {
@@ -88,6 +206,14 @@
         },
         {
           "type": "operand",
+          "named": true
+        },
+        {
+          "type": "preprocgen",
+          "named": true
+        },
+        {
+          "type": "proc",
           "named": true
         },
         {
@@ -242,7 +368,23 @@
       "required": true,
       "types": [
         {
+          "type": "directive_line",
+          "named": true
+        },
+        {
+          "type": "equ",
+          "named": true
+        },
+        {
+          "type": "generic_line",
+          "named": true
+        },
+        {
           "type": "label",
+          "named": true
+        },
+        {
+          "type": "macro",
           "named": true
         },
         {
@@ -251,6 +393,14 @@
         },
         {
           "type": "operand",
+          "named": true
+        },
+        {
+          "type": "preprocgen",
+          "named": true
+        },
+        {
+          "type": "proc",
           "named": true
         },
         {
@@ -274,7 +424,15 @@
       "required": false,
       "types": [
         {
+          "type": "directive_line",
+          "named": true
+        },
+        {
           "type": "equ",
+          "named": true
+        },
+        {
+          "type": "generic_line",
           "named": true
         },
         {

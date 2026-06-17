@@ -22,7 +22,7 @@ done:
     (label (identifier))
     (mnemonic)
     (macroend))
-  (preprocgen (identifier) (identifier)))
+  (generic_line (identifier) (register)))
 
 ====================
 conditional assembly

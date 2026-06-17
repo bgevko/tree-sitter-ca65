@@ -19,9 +19,9 @@
 | Addressing modes | `test/corpus/addressing-modes.tst` | PASS | 5/5 pass. Covers implied, accumulator, immediate, absolute/indexed, indirect, and address-size-prefix syntax. |
 | Directives and data | `test/corpus/directives-data.tst` | PASS | 3/3 pass. Covers segment switches, storage allocation, data emission, includes, imports, exports, and globals. |
 | Expressions | `test/corpus/expressions.tst` | PASS | 4/4 pass. Covers number forms, unary byte/bank operators, binary operators, pseudo variables, and pseudo functions. |
-| Symbols and scopes | `test/corpus/symbols-scopes.tst` | FAIL | 0/3 pass. Failing areas: cheap local references, explicit scope access, `.set`, and `:=`. |
-| Macros and control | `test/corpus/macros-control.tst` | FAIL | 1/3 pass. Failing areas: macro bodies with `.local` and conditional assembly expected tree shape. |
-| Structs, unions, enums | `test/corpus/structs-unions.tst` | FAIL | 0/3 pass. Current parser produces recoverable directive lines, but expected trees do not match aggregate constructs. |
+| Symbols and scopes | `test/corpus/symbols-scopes.tst` | PASS | 3/3 pass. Covers standard labels, cheap locals, unnamed labels, `.scope`, `.proc`, explicit scope access, `=`, `.set`, and `:=`. |
+| Macros and control | `test/corpus/macros-control.tst` | FAIL | 2/3 pass. Macro bodies and macro invocation lines parse cleanly; conditional assembly remains for the next fix. |
+| Structs, unions, enums | `test/corpus/structs-unions.tst` | PASS | 3/3 pass. Covers `.struct`, `.union`, `.enum`, `.tag`, and member declarations. |
 | CPU modes | `test/corpus/cpu-modes.tst` | PASS | 2/2 pass. Covers processor mode directives and representative 65C02/65816 mnemonics. |
 | Highlight coverage | `test/highlight/coverage.asm` | PASS | Broad highlight fixture passes with standard captures. |
 
