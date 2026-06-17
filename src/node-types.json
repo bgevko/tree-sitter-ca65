@@ -114,7 +114,15 @@
           "named": true
         },
         {
+          "type": "char",
+          "named": true
+        },
+        {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "local_identifier",
           "named": true
         },
         {
@@ -123,6 +131,14 @@
         },
         {
           "type": "operator",
+          "named": true
+        },
+        {
+          "type": "register",
+          "named": true
+        },
+        {
+          "type": "separator",
           "named": true
         },
         {
@@ -137,7 +153,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
@@ -149,15 +165,7 @@
           "named": true
         },
         {
-          "type": "number",
-          "named": true
-        },
-        {
           "type": "register",
-          "named": true
-        },
-        {
-          "type": "separator",
           "named": true
         },
         {
@@ -323,7 +331,15 @@
           "named": true
         },
         {
+          "type": "char",
+          "named": true
+        },
+        {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "local_identifier",
           "named": true
         },
         {
@@ -332,6 +348,14 @@
         },
         {
           "type": "operator",
+          "named": true
+        },
+        {
+          "type": "register",
+          "named": true
+        },
+        {
+          "type": "separator",
           "named": true
         },
         {

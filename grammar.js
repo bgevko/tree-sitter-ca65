@@ -20,7 +20,7 @@ const
     'ALR', 'ANC', 'ARR', 'AXS', 'DCP', 'ISC', 'LAS', 'LAX', 'RLA', 'RRA', 'SAX', 'SLO', 'SRE'
   ],
   operators = [
-    '+', '-', '/', '*', '<', '>', '!', '|'
+    '+', '-', '/', '*', '<', '>', '!', '|', '&', '^', '=', ':'
   ],
   brackets = [
     '(', ')', '[', ']', '{', '}'
@@ -28,6 +28,10 @@ const
 
 module.exports = grammar({
   name: 'ca65',
+
+  conflicts: $ => [
+    [$.operand, $.mem_address],
+  ],
 
   extras: $ => [
     /[ \t\r]+/,
@@ -78,28 +82,24 @@ module.exports = grammar({
       $.value,
       $.string,
       $.char,
-      $.register,
-      seq(
-        $.mem_address, 
-        $.separator,
-        choice(
-          $.register,
-          $.number
-       )
-      )
+      $.register
     ),
 
     mem_address: $ => choice(
       $.unnamed_label_ref,
-      repeat1(
+      prec.left(repeat1(
         choice(
           $.base,
           $.number,
           $.identifier,
+          $.local_identifier,
+          $.char,
           $.operator,
+          $.separator,
+          $.register,
           $.bracket
         )
-      )
+      ))
     ),   
 
     equ: $ => seq(
@@ -164,10 +164,14 @@ module.exports = grammar({
       $.valuetag,
       repeat1(
         choice(
-          $.base, 
-          $.number, 
+          $.base,
+          $.number,
           $.identifier,
+          $.local_identifier,
+          $.char,
           $.operator,
+          $.separator,
+          $.register,
           $.bracket
         )
       )

@@ -85,9 +85,9 @@ operand addr register
   (operand
     (mem_address
       (base)
-      (number))
-    (separator)
-    (register)))
+      (number)
+      (separator)
+      (register))))
 
 ====================
 operand sep register
@@ -99,9 +99,9 @@ operand sep register
   (mnemonic)
   (operand
     (mem_address
-      (identifier))
-    (separator)
-    (register)))
+      (identifier)
+      (separator)
+      (register))))
 
 ===================
 operand addr hi/lo

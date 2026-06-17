@@ -69,28 +69,28 @@ absolute and indexed
   (operand
     (mem_address
       (base)
-      (number))
-    (separator)
-    (register))
+      (number)
+      (separator)
+      (register)))
   (mnemonic)
   (operand
     (mem_address
       (base)
-      (number))
-    (separator)
-    (register))
+      (number)
+      (separator)
+      (register)))
   (mnemonic)
   (operand
     (mem_address
-      (identifier))
-    (separator)
-    (register))
+      (identifier)
+      (separator)
+      (register)))
   (mnemonic)
   (operand
     (mem_address
-      (identifier))
-    (separator)
-    (register)))
+      (identifier)
+      (separator)
+      (register))))
 
 ====================
 indirect modes
@@ -124,9 +124,9 @@ indirect modes
       (bracket)
       (base)
       (number)
-      (bracket))
-    (separator)
-    (register)))
+      (bracket)
+      (separator)
+      (register))))
 
 ====================
 address size prefixes
@@ -141,7 +141,7 @@ address size prefixes
   (mnemonic)
   (operand
     (mem_address
-      (identifier)
+      (register)
       (operator)
       (base)
       (number)))
