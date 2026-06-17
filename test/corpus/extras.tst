@@ -37,3 +37,25 @@ lda #$00
       (valuetag)
       (base)
       (number))))
+
+====================
+directive requires dot
+====================
+segment "CODE"
+---
+
+(source_file
+  (ERROR
+    (identifier)
+    (string)))
+
+====================
+string stays visible
+====================
+.segment "CODE"
+---
+
+(source_file
+  (preprocgen
+    (preproccmd)
+    (string)))

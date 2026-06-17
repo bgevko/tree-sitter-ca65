@@ -60,7 +60,8 @@ operand char
 ---
 (source_file
   (mnemonic)
-  (char))
+  (operand
+    (char)))
 
 ====================
 operand register 
@@ -126,4 +127,3 @@ operand addr hi/lo
       (bracket)
       (identifier)
       (bracket))))
-

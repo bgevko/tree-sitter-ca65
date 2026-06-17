@@ -1161,6 +1161,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "char"
+        },
+        {
+          "type": "SYMBOL",
           "name": "register"
         },
         {
@@ -1777,7 +1785,7 @@
     },
     "preproccmd": {
       "type": "PATTERN",
-      "value": ".[a-zA-Z_]+"
+      "value": "\\.[a-zA-Z_]+"
     },
     "comment": {
       "type": "PATTERN",
@@ -1800,14 +1808,6 @@
     {
       "type": "SYMBOL",
       "name": "comment"
-    },
-    {
-      "type": "SYMBOL",
-      "name": "string"
-    },
-    {
-      "type": "SYMBOL",
-      "name": "char"
     }
   ],
   "conflicts": [],

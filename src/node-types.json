@@ -114,6 +114,10 @@
       "required": true,
       "types": [
         {
+          "type": "char",
+          "named": true
+        },
+        {
           "type": "mem_address",
           "named": true
         },
@@ -127,6 +131,10 @@
         },
         {
           "type": "separator",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -342,8 +350,7 @@
   },
   {
     "type": "char",
-    "named": true,
-    "extra": true
+    "named": true
   },
   {
     "type": "comment",
@@ -416,8 +423,7 @@
   },
   {
     "type": "string",
-    "named": true,
-    "extra": true
+    "named": true
   },
   {
     "type": "valuetag",

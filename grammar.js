@@ -34,9 +34,7 @@ module.exports = grammar({
 
   extras: $ => [
     /[ \t\r]+/,
-    $.comment,
-    $.string,
-    $.char
+    $.comment
   ],
 
   rules: {
@@ -81,6 +79,8 @@ module.exports = grammar({
     operand: $ => choice(
       $.mem_address,
       $.value,
+      $.string,
+      $.char,
       $.register,
       seq(
         $.mem_address, 
@@ -201,7 +201,7 @@ module.exports = grammar({
     label: $ => /@{0,1}[a-zA-Z0-9_]*:/, 
     number: $ => /[0-9a-fA-F]+/,
     identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
-    preproccmd: $ => /.[a-zA-Z_]+/,
+    preproccmd: $ => /\.[a-zA-Z_]+/,
     comment: $ => /;.*/,
     string: $ => /".*"/,
     char: $ => /\'.\'/,
