@@ -1,8 +1,8 @@
-(preproccmd) @keyword.directive
-(procstart) @keyword.directive
-(procend) @keyword.directive
-(macrostart) @keyword.directive
-(macroend) @keyword.directive
+(preproccmd) @keyword
+(procstart) @keyword
+(procend) @keyword
+(macrostart) @keyword
+(macroend) @keyword
 
 (proc proc_name: (identifier) @function)
 
