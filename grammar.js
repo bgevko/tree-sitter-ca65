@@ -31,7 +31,6 @@ module.exports = grammar({
 
   conflicts: $ => [
     [$.operand, $.mem_address],
-    [$.macro, $.generic_line],
     [$.preprocgen, $.directive_line],
     [$.generic_line],
   ],
@@ -192,10 +191,8 @@ module.exports = grammar({
           $.local_identifier,
           $.register,
           $.number,
-          $.string,
           $.base,
           $.bracket,
-          $.separator,
           $.char
         )
       )

@@ -125,14 +125,6 @@
         {
           "type": "register",
           "named": true
-        },
-        {
-          "type": "separator",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
         }
       ]
     }

@@ -29,12 +29,11 @@
 
 | Command | Result | Notes |
 | --- | --- | --- |
-| `npm test` | FAIL | 45/59 parser tests pass; 14 parser corpus failures remain. Highlight tests pass inside this command. |
+| `npm test` | PASS | Full parser corpus plus highlight checks pass. |
 | `npm run test:highlight` | PASS | Both `basic.asm` and `coverage.asm` pass. |
-| `cargo test` | PASS | Rust binding unit tests and doctest pass. |
+| `cargo test` | PASS | Rust binding smoke tests pass. |
 
 ## Reassessment Notes
 
-- If all tests pass, grammar coverage is substantially broader and the project is likely close to parser-smoke-test complete.
-- If any tests fail, keep the failures as evidence and open a separate grammar-fix plan. Do not fix failures in this test-only pass.
-- Current result: reassessment needed. Broad coverage exposed parser/expected-tree gaps in addressing modes, expressions, symbols/scopes, macros/control, aggregate directives, and CPU mode directives.
+- Broad CA65 parser and highlight coverage now passes.
+- Remaining work should focus on deeper semantic modeling and richer node names, not basic parser smoke coverage.

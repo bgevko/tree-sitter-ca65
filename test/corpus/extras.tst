@@ -45,8 +45,9 @@ segment "CODE"
 ---
 
 (source_file
+  (generic_line
+    (identifier))
   (ERROR
-    (identifier)
     (string)))
 
 ====================

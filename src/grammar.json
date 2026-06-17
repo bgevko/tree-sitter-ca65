@@ -1718,19 +1718,11 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "string"
-              },
-              {
-                "type": "SYMBOL",
                 "name": "base"
               },
               {
                 "type": "SYMBOL",
                 "name": "bracket"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "separator"
               },
               {
                 "type": "SYMBOL",
@@ -2082,10 +2074,6 @@
     [
       "operand",
       "mem_address"
-    ],
-    [
-      "macro",
-      "generic_line"
     ],
     [
       "preprocgen",
