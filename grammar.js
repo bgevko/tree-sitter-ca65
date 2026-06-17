@@ -55,6 +55,14 @@ module.exports = grammar({
       $.equ
     ),
 
+    _block_item: $ => choice(
+      $.directive_line,
+      $._statement,
+      $.generic_line,
+      $._preproc,
+      $.equ
+    ),
+
     _newline: $ => /\r?\n/,
 
     _statement: $ => choice(
@@ -124,7 +132,7 @@ module.exports = grammar({
           choice('near', 'far', 'huge', 'NEAR', 'FAR', 'HUGE')
         )
       ),
-      repeat(choice($._newline, seq(choice($.directive_line, $._statement, $.generic_line, $._preproc, $.equ), $._newline))),
+      repeat(choice($._newline, seq($._block_item, $._newline))),
       $.procend
     ),
 
@@ -134,7 +142,7 @@ module.exports = grammar({
       $.macrostart, 
       $.identifier,
       repeatSep($.identifier, $.separator),
-      repeat(choice($._newline, seq(choice($.directive_line, $._statement, $.generic_line, $._preproc, $.equ), $._newline))),
+      repeat(choice($._newline, seq($._block_item, $._newline))),
       $.macroend
     )),
 
@@ -142,6 +150,7 @@ module.exports = grammar({
       $.preproccmd,
       repeat(
         choice(
+          $.preproccmd,
           $.number,
           $.string,
           $.identifier,
