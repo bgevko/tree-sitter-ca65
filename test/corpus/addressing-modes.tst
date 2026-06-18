@@ -14,7 +14,7 @@ implied and accumulator
     (mnemonic))
   (instruction
     (mnemonic)
-    (operand
+    (accumulator_operand
       (register))))
 
 ====================
@@ -30,27 +30,27 @@ immediate number forms
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (number))))
   (instruction
     (mnemonic)
-    (operand
-      (immediate
-        (immediate_marker)
-        (base)
-        (number))))
-  (instruction
-    (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (base)
         (number))))
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
+      (immediate
+        (immediate_marker)
+        (base)
+        (number))))
+  (instruction
+    (mnemonic)
+    (immediate_operand
       (immediate
         (immediate_marker)
         (char)))))
@@ -69,40 +69,40 @@ absolute and indexed
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
         (base)
         (number))))
   (instruction
     (mnemonic)
-    (operand
+    (indexed_operand
       (address_expression
         (base)
-        (number)
-        (separator)
-        (register))))
+        (number))
+      (separator)
+      (register)))
   (instruction
     (mnemonic)
-    (operand
+    (indexed_operand
       (address_expression
         (base)
-        (number)
-        (separator)
-        (register))))
+        (number))
+      (separator)
+      (register)))
   (instruction
     (mnemonic)
-    (operand
+    (indexed_operand
       (address_expression
-        (identifier)
-        (separator)
-        (register))))
+        (identifier))
+      (separator)
+      (register)))
   (instruction
     (mnemonic)
-    (operand
+    (indexed_operand
       (address_expression
-        (identifier)
-        (separator)
-        (register)))))
+        (identifier))
+      (separator)
+      (register))))
 
 ====================
 indirect modes
@@ -116,32 +116,26 @@ indirect modes
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (indirect_operand
       (address_expression
-        (bracket)
         (base)
-        (number)
-        (bracket))))
+        (number))))
   (instruction
     (mnemonic)
-    (operand
+    (indexed_indirect_operand
       (address_expression
-        (bracket)
         (base)
-        (number)
-        (separator)
-        (register)
-        (bracket))))
+        (number))
+      (separator)
+      (register)))
   (instruction
     (mnemonic)
-    (operand
+    (indirect_indexed_operand
       (address_expression
-        (bracket)
         (base)
-        (number)
-        (bracket)
-        (separator)
-        (register)))))
+        (number))
+      (separator)
+      (register))))
 
 ====================
 address size prefixes
@@ -155,22 +149,20 @@ address size prefixes
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
-        (register)
-        (operator)
+        (address_size_prefix)
         (base)
         (number))))
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
-        (identifier)
-        (operator)
+        (address_size_prefix)
         (base)
         (number))))
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
         (identifier)))))

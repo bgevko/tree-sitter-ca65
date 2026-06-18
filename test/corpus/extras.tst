@@ -10,7 +10,7 @@ comments
   (comment)
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
         (base)
         (number))))
@@ -35,7 +35,7 @@ lda #$00
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (base)

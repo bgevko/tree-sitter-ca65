@@ -43,12 +43,12 @@ extended mnemonics
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
         (identifier))))
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
         (base)
         (number))))
@@ -58,7 +58,7 @@ extended mnemonics
     (mnemonic))
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
         (identifier))))
   (instruction

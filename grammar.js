@@ -30,7 +30,6 @@ module.exports = grammar({
   name: 'ca65',
 
   conflicts: $ => [
-    [$.operand, $.address_expression],
   ],
 
   extras: $ => [
@@ -73,7 +72,7 @@ module.exports = grammar({
 
     instruction: $ => prec.right(1, seq(
       field('mnemonic', $.mnemonic),
-      optional(field('operand', $.operand))
+      optional(field('operand', $._operand))
     )),
 
     mnemonic: $ => token(choice(
@@ -84,13 +83,57 @@ module.exports = grammar({
       ...ca65illegal
     )),
 
-    operand: $ => choice(
-      $.address_expression,
-      $.immediate,
-      $.string,
-      $.char,
-      $.register
+    _operand: $ => choice(
+      $.immediate_operand,
+      $.indexed_indirect_operand,
+      $.indirect_indexed_operand,
+      $.indirect_operand,
+      $.indexed_operand,
+      $.address_operand,
+      $.accumulator_operand,
+      $.literal_operand
     ),
+
+    immediate_operand: $ => $.immediate,
+
+    accumulator_operand: $ => prec(2, $.register),
+
+    literal_operand: $ => prec(2, choice(
+      $.string,
+      $.char
+    )),
+
+    indexed_indirect_operand: $ => seq(
+      '(',
+      field('address', $.address_expression),
+      $.separator,
+      field('index', $.register),
+      ')'
+    ),
+
+    indirect_indexed_operand: $ => seq(
+      '(',
+      field('address', $.address_expression),
+      ')',
+      $.separator,
+      field('index', $.register)
+    ),
+
+    indirect_operand: $ => seq(
+      '(',
+      $.address_expression,
+      ')'
+    ),
+
+    indexed_operand: $ => seq(
+      field('address', $.address_expression),
+      $.separator,
+      field('index', $.register)
+    ),
+
+    address_operand: $ => $.address_expression,
+
+    address_size_prefix: $ => token(choice('a:', 'f:', 'z:', 'A:', 'F:', 'Z:')),
 
     address_expression: $ => choice(
       $.unnamed_label_ref,
@@ -98,6 +141,7 @@ module.exports = grammar({
         choice(
           $.base,
           $.number,
+          $.address_size_prefix,
           $.identifier,
           $.local_identifier,
           $.char,

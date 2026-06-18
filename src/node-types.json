@@ -1,5 +1,20 @@
 [
   {
+    "type": "accumulator_operand",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "register",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "address_expression",
     "named": true,
     "fields": {},
@@ -7,6 +22,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "address_size_prefix",
+          "named": true
+        },
         {
           "type": "base",
           "named": true
@@ -45,6 +64,21 @@
         },
         {
           "type": "unnamed_label_ref",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "address_operand",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "address_expression",
           "named": true
         }
       ]
@@ -383,6 +417,144 @@
     }
   },
   {
+    "type": "immediate_operand",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "immediate",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "indexed_indirect_operand",
+    "named": true,
+    "fields": {
+      "address": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "address_expression",
+            "named": true
+          }
+        ]
+      },
+      "index": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "register",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "separator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "indexed_operand",
+    "named": true,
+    "fields": {
+      "address": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "address_expression",
+            "named": true
+          }
+        ]
+      },
+      "index": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "register",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "separator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "indirect_indexed_operand",
+    "named": true,
+    "fields": {
+      "address": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "address_expression",
+            "named": true
+          }
+        ]
+      },
+      "index": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "register",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "separator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "indirect_operand",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "address_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "instruction",
     "named": true,
     "fields": {
@@ -401,7 +573,35 @@
         "required": false,
         "types": [
           {
-            "type": "operand",
+            "type": "accumulator_operand",
+            "named": true
+          },
+          {
+            "type": "address_operand",
+            "named": true
+          },
+          {
+            "type": "immediate_operand",
+            "named": true
+          },
+          {
+            "type": "indexed_indirect_operand",
+            "named": true
+          },
+          {
+            "type": "indexed_operand",
+            "named": true
+          },
+          {
+            "type": "indirect_indexed_operand",
+            "named": true
+          },
+          {
+            "type": "indirect_operand",
+            "named": true
+          },
+          {
+            "type": "literal_operand",
             "named": true
           }
         ]
@@ -469,6 +669,25 @@
       "types": [
         {
           "type": "directive_arguments",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "literal_operand",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "char",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         }
       ]
@@ -591,37 +810,6 @@
       "types": [
         {
           "type": "separator",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "operand",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "address_expression",
-          "named": true
-        },
-        {
-          "type": "char",
-          "named": true
-        },
-        {
-          "type": "immediate",
-          "named": true
-        },
-        {
-          "type": "register",
-          "named": true
-        },
-        {
-          "type": "string",
           "named": true
         }
       ]
@@ -784,6 +972,14 @@
     "fields": {}
   },
   {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
     "type": "+",
     "named": false
   },
@@ -806,6 +1002,10 @@
   {
     "type": "NEAR",
     "named": false
+  },
+  {
+    "type": "address_size_prefix",
+    "named": true
   },
   {
     "type": "anything",

@@ -11,27 +11,27 @@ numeric formats
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (number))))
   (instruction
     (mnemonic)
-    (operand
-      (immediate
-        (immediate_marker)
-        (base)
-        (number))))
-  (instruction
-    (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (base)
         (number))))
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
+      (immediate
+        (immediate_marker)
+        (base)
+        (number))))
+  (instruction
+    (mnemonic)
+    (immediate_operand
       (immediate
         (immediate_marker)
         (char)))))
@@ -48,21 +48,21 @@ unary byte operators
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (operator)
         (identifier))))
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (operator)
         (identifier))))
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (operator)

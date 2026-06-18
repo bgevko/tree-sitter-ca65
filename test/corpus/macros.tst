@@ -13,7 +13,7 @@ macro no arg
     (identifier)
     (instruction
       (mnemonic)
-      (operand
+      (immediate_operand
         (immediate
           (immediate_marker)
           (number))))
@@ -39,12 +39,12 @@ macro args
       (identifier))
     (instruction
       (mnemonic)
-      (operand
+      (address_operand
         (address_expression
           (identifier))))
     (instruction
       (mnemonic)
-      (operand
+      (address_operand
         (address_expression
           (identifier))))
     (macroend)))
@@ -64,7 +64,7 @@ macro short
     (identifier)
     (instruction
       (mnemonic)
-      (operand
+      (immediate_operand
         (immediate
           (immediate_marker)
           (number))))

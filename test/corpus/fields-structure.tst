@@ -34,16 +34,16 @@ reset:
     name: (identifier))
   (instruction
     mnemonic: (mnemonic)
-    operand: (operand
+    operand: (immediate_operand
       (immediate
         (immediate_marker)
         (base)
         (number))))
   (instruction
     mnemonic: (mnemonic)
-    operand: (operand
-      (address_expression
+    operand: (indexed_operand
+      address: (address_expression
         (base)
-        (number)
-        (separator)
-        (register)))))
+        (number))
+      (separator)
+      index: (register))))

@@ -19,14 +19,14 @@ reset:
     (identifier))
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (base)
         (number))))
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
         (base)
         (number))))

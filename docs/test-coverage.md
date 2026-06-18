@@ -39,3 +39,4 @@
 - Remaining work should focus on deeper semantic modeling and richer node names, not basic parser smoke coverage.
 - Grammar precision pass 1 complete: public nodes now use clearer directive/immediate/address/instruction names and expose fields for directive names, instruction mnemonics/operands, labels, proc names, and macro parameters.
 - Grammar precision pass 2 complete: identifier-led and generic lines are now split into assignments, symbol directives, labeled directives, macro calls, and enum members, including ca65 macro-call argument separators and brace-grouped arguments.
+- Grammar precision pass 3 complete: operands now expose named immediate, accumulator, literal, address, indexed, indirect, indexed-indirect, and indirect-indexed syntax forms without claiming semantic zeropage/absolute resolution.

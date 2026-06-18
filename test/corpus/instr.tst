@@ -8,7 +8,7 @@ instr base
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (number)))))
@@ -23,7 +23,7 @@ instr wdc
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
         (base)
         (number)))))
@@ -52,7 +52,7 @@ instr macpack
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
         (base)
         (number)))))

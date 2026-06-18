@@ -8,7 +8,7 @@ operand number dec
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (number)))))
@@ -23,7 +23,7 @@ operand number bin
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (base)
@@ -39,7 +39,7 @@ operand number hex
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (base)
@@ -55,7 +55,7 @@ operand addr
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
         (base)
         (number)))))
@@ -70,7 +70,7 @@ operand char
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (literal_operand
       (char))))
 
 ====================
@@ -83,7 +83,7 @@ operand register
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (accumulator_operand
       (register))))
 
 ====================
@@ -96,12 +96,12 @@ operand addr register
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (indexed_operand
       (address_expression
         (base)
-        (number)
-        (separator)
-        (register)))))
+        (number))
+      (separator)
+      (register))))
 
 ====================
 operand sep register
@@ -113,11 +113,11 @@ operand sep register
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (indexed_operand
       (address_expression
-        (identifier)
-        (separator)
-        (register)))))
+        (identifier))
+      (separator)
+      (register))))
 
 ===================
 operand addr hi/lo
@@ -130,7 +130,7 @@ operand addr hi/lo
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (operator)
@@ -139,7 +139,7 @@ operand addr hi/lo
         (bracket))))
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (operator)

@@ -11,7 +11,7 @@ label1:
     (identifier))
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
         (identifier)))))
 
@@ -28,7 +28,7 @@ label local
     (local_identifier))
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (number)))))
@@ -46,7 +46,7 @@ label unnamed -
     (unnamed_label))
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
         (unnamed_label_ref)))))
 
@@ -61,14 +61,14 @@ label unnamed +
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
         (unnamed_label_ref))))
   (label
     (unnamed_label))
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (number)))))
@@ -83,7 +83,7 @@ label unnamed +++
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
         (unnamed_label_ref)))))
 
@@ -97,7 +97,7 @@ label unnamed --
 (source_file
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
         (unnamed_label_ref)))))
 
@@ -114,7 +114,7 @@ label2: lda #03
     (identifier))
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (number))))
@@ -122,7 +122,7 @@ label2: lda #03
     (identifier))
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (number)))))

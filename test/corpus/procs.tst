@@ -13,7 +13,7 @@ proc base
     (identifier)
     (instruction
       (mnemonic)
-      (operand
+      (immediate_operand
         (immediate
           (immediate_marker)
           (number))))
@@ -34,7 +34,7 @@ proc near
     (identifier)
     (instruction
       (mnemonic)
-      (operand
+      (immediate_operand
         (immediate
           (immediate_marker)
           (base)

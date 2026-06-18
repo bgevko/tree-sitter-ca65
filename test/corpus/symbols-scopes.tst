@@ -19,19 +19,19 @@ global:
     (local_identifier))
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
         (local_identifier))))
   (label
     (unnamed_label))
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
         (unnamed_label_ref))))
   (instruction
     (mnemonic)
-    (operand
+    (address_operand
       (address_expression
         (unnamed_label_ref))))
   (label
@@ -62,7 +62,7 @@ scope and proc blocks
     (identifier))
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (base)
@@ -74,7 +74,7 @@ scope and proc blocks
     (identifier)
     (instruction
       (mnemonic)
-      (operand
+      (address_operand
         (address_expression
           (identifier)
           (operator)

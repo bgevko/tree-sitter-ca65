@@ -58,7 +58,7 @@ conditional assembly
       (bracket)))
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (number))))
@@ -71,7 +71,7 @@ conditional assembly
       (bracket)))
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (number))))
@@ -79,7 +79,7 @@ conditional assembly
     (directive_name))
   (instruction
     (mnemonic)
-    (operand
+    (immediate_operand
       (immediate
         (immediate_marker)
         (number))))
