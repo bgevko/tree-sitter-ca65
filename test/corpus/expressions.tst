@@ -80,23 +80,23 @@ binary operators
 ---
 
 (source_file
-  (equ
+  (assignment
     (identifier)
     (equal)
     (anything))
-  (equ
+  (assignment
     (identifier)
     (equal)
     (anything))
-  (equ
+  (assignment
     (identifier)
     (equal)
     (anything))
-  (equ
+  (assignment
     (identifier)
     (equal)
     (anything))
-  (equ
+  (assignment
     (identifier)
     (equal)
     (anything)))
@@ -114,27 +114,27 @@ pseudo variables and functions
 ---
 
 (source_file
-  (equ
+  (assignment
     (identifier)
     (equal)
     (anything))
-  (equ
+  (assignment
     (identifier)
     (equal)
     (anything))
-  (equ
+  (assignment
     (identifier)
     (equal)
     (anything))
-  (equ
+  (assignment
     (identifier)
     (equal)
     (anything))
-  (equ
+  (assignment
     (identifier)
     (equal)
     (anything))
-  (equ
+  (assignment
     (identifier)
     (equal)
     (anything)))

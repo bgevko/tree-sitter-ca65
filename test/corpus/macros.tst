@@ -33,9 +33,10 @@ macro args
   (macro
     (macrostart)
     (identifier)
-    (identifier)
-    (separator)
-    (identifier)
+    (macro_parameters
+      (identifier)
+      (separator)
+      (identifier))
     (instruction
       (mnemonic)
       (operand

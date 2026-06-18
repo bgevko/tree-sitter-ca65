@@ -14,11 +14,13 @@ struct definition
     (directive_arguments
       (identifier)))
   (directive_line
-    (identifier)
-    (directive_name))
+    (symbol_directive
+      (identifier)
+      (directive_name)))
   (directive_line
-    (identifier)
-    (directive_name))
+    (symbol_directive
+      (identifier)
+      (directive_name)))
   (directive
     (directive_name)))
 
@@ -40,18 +42,22 @@ item: .tag Value
     (directive_arguments
       (identifier)))
   (directive_line
-    (identifier)
-    (directive_name))
+    (symbol_directive
+      (identifier)
+      (directive_name)))
   (directive_line
-    (identifier)
-    (directive_name))
+    (symbol_directive
+      (identifier)
+      (directive_name)))
   (directive
     (directive_name))
   (directive_line
-    (label
-      (identifier))
-    (directive_name)
-    (identifier)))
+    (labeled_directive
+      (label
+        (identifier))
+      (directive_name)
+      (directive_arguments
+        (identifier)))))
 
 ====================
 enum values
@@ -69,8 +75,10 @@ enum values
     (directive_arguments
       (identifier)))
   (generic_line
-    (identifier))
+    (enum_member
+      (identifier)))
   (generic_line
-    (identifier))
+    (enum_member
+      (identifier)))
   (directive
     (directive_name)))

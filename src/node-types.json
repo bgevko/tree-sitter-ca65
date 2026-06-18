@@ -51,6 +51,109 @@
     }
   },
   {
+    "type": "argument_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "base",
+          "named": true
+        },
+        {
+          "type": "bracket",
+          "named": true
+        },
+        {
+          "type": "char",
+          "named": true
+        },
+        {
+          "type": "grouped_argument",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "local_identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "register",
+          "named": true
+        },
+        {
+          "type": "separator",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "assignment",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "local_identifier",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "assignment_operator",
+            "named": true
+          },
+          {
+            "type": "equal",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "address_expression",
+            "named": true
+          },
+          {
+            "type": "anything",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "directive",
     "named": true,
     "fields": {
@@ -124,8 +227,66 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
+      "types": [
+        {
+          "type": "labeled_directive",
+          "named": true
+        },
+        {
+          "type": "symbol_directive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "enum_member",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "local_identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "generic_line",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "enum_member",
+          "named": true
+        },
+        {
+          "type": "macro_call",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "grouped_argument",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
       "types": [
         {
           "type": "base",
@@ -140,15 +301,7 @@
           "named": true
         },
         {
-          "type": "directive_name",
-          "named": true
-        },
-        {
           "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "label",
           "named": true
         },
         {
@@ -164,86 +317,15 @@
           "named": true
         },
         {
+          "type": "register",
+          "named": true
+        },
+        {
           "type": "separator",
           "named": true
         },
         {
           "type": "string",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "equ",
-    "named": true,
-    "fields": {
-      "constant": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "equ": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "equal",
-            "named": true
-          }
-        ]
-      },
-      "value": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "anything",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "generic_line",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "base",
-          "named": true
-        },
-        {
-          "type": "bracket",
-          "named": true
-        },
-        {
-          "type": "char",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "local_identifier",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "register",
           "named": true
         }
       ]
@@ -357,22 +439,48 @@
     }
   },
   {
+    "type": "labeled_directive",
+    "named": true,
+    "fields": {
+      "directive": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "directive_name",
+            "named": true
+          }
+        ]
+      },
+      "label": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "label",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "directive_arguments",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "macro",
     "named": true,
     "fields": {
       "name": {
         "multiple": false,
         "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "parameter": {
-        "multiple": true,
-        "required": false,
         "types": [
           {
             "type": "identifier",
@@ -386,15 +494,15 @@
       "required": true,
       "types": [
         {
+          "type": "assignment",
+          "named": true
+        },
+        {
           "type": "directive",
           "named": true
         },
         {
           "type": "directive_line",
-          "named": true
-        },
-        {
-          "type": "equ",
           "named": true
         },
         {
@@ -414,6 +522,10 @@
           "named": true
         },
         {
+          "type": "macro_parameters",
+          "named": true
+        },
+        {
           "type": "macroend",
           "named": true
         },
@@ -424,7 +536,59 @@
         {
           "type": "proc",
           "named": true
-        },
+        }
+      ]
+    }
+  },
+  {
+    "type": "macro_call",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "local_identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "argument_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "macro_parameters",
+    "named": true,
+    "fields": {
+      "parameter": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
         {
           "type": "separator",
           "named": true
@@ -483,15 +647,15 @@
       "required": true,
       "types": [
         {
+          "type": "assignment",
+          "named": true
+        },
+        {
           "type": "directive",
           "named": true
         },
         {
           "type": "directive_line",
-          "named": true
-        },
-        {
-          "type": "equ",
           "named": true
         },
         {
@@ -535,15 +699,15 @@
       "required": false,
       "types": [
         {
+          "type": "assignment",
+          "named": true
+        },
+        {
           "type": "directive",
           "named": true
         },
         {
           "type": "directive_line",
-          "named": true
-        },
-        {
-          "type": "equ",
           "named": true
         },
         {
@@ -564,6 +728,46 @@
         },
         {
           "type": "proc",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "symbol_directive",
+    "named": true,
+    "fields": {
+      "directive": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "directive_name",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "local_identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "directive_arguments",
           "named": true
         }
       ]
@@ -605,6 +809,10 @@
   },
   {
     "type": "anything",
+    "named": true
+  },
+  {
+    "type": "assignment_operator",
     "named": true
   },
   {
@@ -695,5 +903,13 @@
   {
     "type": "string",
     "named": true
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
   }
 ]

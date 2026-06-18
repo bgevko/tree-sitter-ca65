@@ -31,9 +31,6 @@ module.exports = grammar({
 
   conflicts: $ => [
     [$.operand, $.address_expression],
-    [$.directive, $.directive_line],
-    [$._directive_argument, $.directive_line],
-    [$.generic_line],
   ],
 
   extras: $ => [
@@ -52,7 +49,7 @@ module.exports = grammar({
       $._statement,
       $.generic_line,
       $._preproc,
-      $.equ
+      $.assignment
     ),
 
     _block_item: $ => choice(
@@ -60,7 +57,7 @@ module.exports = grammar({
       $._statement,
       $.generic_line,
       $._preproc,
-      $.equ
+      $.assignment
     ),
 
     _newline: $ => /\r?\n/,
@@ -112,11 +109,20 @@ module.exports = grammar({
       ))
     ),   
 
-    equ: $ => seq(
-      field('constant', $.identifier),
-      field('equ', $.equal),
-      field('value', $.anything)
+    assignment: $ => choice(
+      seq(
+        field('name', $.identifier),
+        field('operator', $.equal),
+        field('value', $.anything)
+      ),
+      seq(
+        field('name', choice($.identifier, $.local_identifier)),
+        field('operator', $.assignment_operator),
+        field('value', $.address_expression)
+      )
     ),
+
+    assignment_operator: $ => token(':='),
 
     procstart: $ => token(choice('.proc', '.PROC')),
     procend: $ => token(choice('.endproc', '.ENDPROC')),
@@ -129,18 +135,25 @@ module.exports = grammar({
           choice('near', 'far', 'huge', 'NEAR', 'FAR', 'HUGE')
         )
       ),
+      $._newline,
       repeat(choice($._newline, seq($._block_item, $._newline))),
       $.procend
     ),
 
     macrostart: $ => token(choice('.macro', '.mac', '.MACRO', '.MAC')),
     macroend: $ => token(choice('.endmacro', '.endmac', '.ENDMACRO', '.ENDMAC')),
-    macro: $ => prec(1, seq(
+    macro: $ => prec(2, seq(
       $.macrostart, 
       field('name', $.identifier),
-      repeatSep(field('parameter', $.identifier), $.separator),
+      optional($.macro_parameters),
+      $._newline,
       repeat(choice($._newline, seq($._block_item, $._newline))),
       $.macroend
+    )),
+
+    macro_parameters: $ => prec(3, seq(
+      field('parameter', $.identifier),
+      repeat(seq($.separator, field('parameter', $.identifier)))
     )),
 
     directive: $ => seq(
@@ -161,41 +174,70 @@ module.exports = grammar({
       $.separator
     ),
 
-    directive_line: $ => seq(
-      choice($.identifier, $.local_identifier, $.label),
-      choice(
-        $.directive_name,
-        $.operator
-      ),
-      repeat(
-        choice(
-          $.directive_name,
-          $.number,
-          $.string,
-          $.identifier,
-          $.local_identifier,
-          $.base,
-          $.operator,
-          $.bracket,
-          $.separator,
-          $.char
-        )
-      )
+    directive_line: $ => choice(
+      $.symbol_directive,
+      $.labeled_directive
     ),
 
-    generic_line: $ => seq(
-      choice($.identifier, $.local_identifier),
-      repeat(
-        choice(
-          $.identifier,
-          $.local_identifier,
-          $.register,
-          $.number,
-          $.base,
-          $.bracket,
-          $.char
-        )
-      )
+    symbol_directive: $ => seq(
+      field('name', choice($.identifier, $.local_identifier)),
+      field('directive', $.directive_name),
+      optional($.directive_arguments)
+    ),
+
+    labeled_directive: $ => seq(
+      field('label', $.label),
+      field('directive', $.directive_name),
+      optional($.directive_arguments)
+    ),
+
+    generic_line: $ => choice(
+      $.macro_call,
+      $.enum_member
+    ),
+
+    macro_call: $ => seq(
+      field('name', choice($.identifier, $.local_identifier)),
+      $.argument_list
+    ),
+
+    enum_member: $ => seq(
+      field('name', choice($.identifier, $.local_identifier))
+    ),
+
+    argument_list: $ => repeat1(choice(
+      $._argument,
+      $.separator
+    )),
+
+    grouped_argument: $ => seq(
+      '{',
+      repeat(choice(
+        $.identifier,
+        $.local_identifier,
+        $.register,
+        $.number,
+        $.base,
+        $.bracket,
+        $.separator,
+        $.operator,
+        $.char,
+        $.string
+      )),
+      '}'
+    ),
+
+    _argument: $ => choice(
+      $.grouped_argument,
+      $.identifier,
+      $.local_identifier,
+      $.register,
+      $.number,
+      $.base,
+      $.bracket,
+      $.operator,
+      $.char,
+      $.string
     ),
 
     _preproc: $ => choice(

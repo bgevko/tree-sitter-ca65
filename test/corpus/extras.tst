@@ -49,9 +49,10 @@ segment "CODE"
 
 (source_file
   (generic_line
-    (identifier))
-  (ERROR
-    (string)))
+    (macro_call
+      (identifier)
+      (argument_list
+        (string)))))
 
 ====================
 string stays visible

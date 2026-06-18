@@ -8,9 +8,9 @@
 
 (mnemonic) @function.builtin
 
-(equ constant: (identifier) @variable)
-(equ equ: (equal) @operator)
-(equ value: (anything) @constant)
+(assignment name: (identifier) @variable)
+(assignment operator: (_) @operator)
+(assignment value: (anything) @constant)
 
 (base) @type
 (immediate) @variable

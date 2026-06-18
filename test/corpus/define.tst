@@ -21,7 +21,7 @@ EQUTEST = $01A1
 ---
 
 (source_file
-  (equ
+  (assignment
     (identifier)
     (equal)
     (anything)))
@@ -53,7 +53,7 @@ EQUTEST = ($01A1+CONST)
 ---
 
 (source_file
-  (equ
+  (assignment
     (identifier)
     (equal)
     (anything)))

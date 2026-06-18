@@ -16,7 +16,8 @@ done:
   (macro
     (macrostart)
     (identifier)
-    (identifier)
+    (macro_parameters
+      (identifier))
     (directive
       (directive_name)
       (directive_arguments
@@ -29,8 +30,10 @@ done:
       (mnemonic))
     (macroend))
   (generic_line
-    (identifier)
-    (register)))
+    (macro_call
+      (identifier)
+      (argument_list
+        (register)))))
 
 ====================
 conditional assembly

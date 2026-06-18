@@ -93,21 +93,23 @@ io := $d000
 ---
 
 (source_file
-  (equ
+  (assignment
     (identifier)
     (equal)
     (anything))
-  (equ
+  (assignment
     (identifier)
     (equal)
     (anything))
   (directive_line
+    (symbol_directive
+      (identifier)
+      (directive_name)
+      (directive_arguments
+        (number))))
+  (assignment
     (identifier)
-    (directive_name)
-    (number))
-  (directive_line
-    (label
-      (identifier))
-    (operator)
-    (base)
-    (number)))
+    (assignment_operator)
+    (address_expression
+      (base)
+      (number))))
