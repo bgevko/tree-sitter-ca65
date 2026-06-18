@@ -1,6 +1,83 @@
 [
   {
+    "type": "address_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "base",
+          "named": true
+        },
+        {
+          "type": "bracket",
+          "named": true
+        },
+        {
+          "type": "char",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "local_identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "register",
+          "named": true
+        },
+        {
+          "type": "separator",
+          "named": true
+        },
+        {
+          "type": "unnamed_label_ref",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "directive",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "directive_name",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "directive_arguments",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "directive_arguments",
     "named": true,
     "fields": {},
     "children": {
@@ -173,93 +250,7 @@
     }
   },
   {
-    "type": "label",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "local_identifier",
-          "named": true
-        },
-        {
-          "type": "unnamed_label",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "macro",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "directive",
-          "named": true
-        },
-        {
-          "type": "directive_line",
-          "named": true
-        },
-        {
-          "type": "equ",
-          "named": true
-        },
-        {
-          "type": "generic_line",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "label",
-          "named": true
-        },
-        {
-          "type": "macro",
-          "named": true
-        },
-        {
-          "type": "macroend",
-          "named": true
-        },
-        {
-          "type": "macrostart",
-          "named": true
-        },
-        {
-          "type": "mnemonic",
-          "named": true
-        },
-        {
-          "type": "operand",
-          "named": true
-        },
-        {
-          "type": "proc",
-          "named": true
-        },
-        {
-          "type": "separator",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "mem_address",
+    "type": "immediate",
     "named": true,
     "fields": {},
     "children": {
@@ -283,6 +274,10 @@
           "named": true
         },
         {
+          "type": "immediate_marker",
+          "named": true
+        },
+        {
           "type": "local_identifier",
           "named": true
         },
@@ -301,9 +296,137 @@
         {
           "type": "separator",
           "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "instruction",
+    "named": true,
+    "fields": {
+      "mnemonic": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "mnemonic",
+            "named": true
+          }
+        ]
+      },
+      "operand": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "operand",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "label",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "local_identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "unnamed_label",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "macro",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "parameter": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "directive",
+          "named": true
         },
         {
-          "type": "unnamed_label_ref",
+          "type": "directive_line",
+          "named": true
+        },
+        {
+          "type": "equ",
+          "named": true
+        },
+        {
+          "type": "generic_line",
+          "named": true
+        },
+        {
+          "type": "instruction",
+          "named": true
+        },
+        {
+          "type": "label",
+          "named": true
+        },
+        {
+          "type": "macro",
+          "named": true
+        },
+        {
+          "type": "macroend",
+          "named": true
+        },
+        {
+          "type": "macrostart",
+          "named": true
+        },
+        {
+          "type": "proc",
+          "named": true
+        },
+        {
+          "type": "separator",
           "named": true
         }
       ]
@@ -318,11 +441,15 @@
       "required": true,
       "types": [
         {
+          "type": "address_expression",
+          "named": true
+        },
+        {
           "type": "char",
           "named": true
         },
         {
-          "type": "mem_address",
+          "type": "immediate",
           "named": true
         },
         {
@@ -332,10 +459,6 @@
         {
           "type": "string",
           "named": true
-        },
-        {
-          "type": "value",
-          "named": true
         }
       ]
     }
@@ -344,7 +467,7 @@
     "type": "proc",
     "named": true,
     "fields": {
-      "proc_name": {
+      "name": {
         "multiple": false,
         "required": true,
         "types": [
@@ -376,19 +499,15 @@
           "named": true
         },
         {
+          "type": "instruction",
+          "named": true
+        },
+        {
           "type": "label",
           "named": true
         },
         {
           "type": "macro",
-          "named": true
-        },
-        {
-          "type": "mnemonic",
-          "named": true
-        },
-        {
-          "type": "operand",
           "named": true
         },
         {
@@ -432,19 +551,15 @@
           "named": true
         },
         {
+          "type": "instruction",
+          "named": true
+        },
+        {
           "type": "label",
           "named": true
         },
         {
           "type": "macro",
-          "named": true
-        },
-        {
-          "type": "mnemonic",
-          "named": true
-        },
-        {
-          "type": "operand",
           "named": true
         },
         {
@@ -463,57 +578,6 @@
     "type": "unnamed_label_ref",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "value",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "base",
-          "named": true
-        },
-        {
-          "type": "bracket",
-          "named": true
-        },
-        {
-          "type": "char",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "local_identifier",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "operator",
-          "named": true
-        },
-        {
-          "type": "register",
-          "named": true
-        },
-        {
-          "type": "separator",
-          "named": true
-        },
-        {
-          "type": "valuetag",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "+",
@@ -581,6 +645,10 @@
     "named": true
   },
   {
+    "type": "immediate_marker",
+    "named": true
+  },
+  {
     "type": "local_identifier",
     "named": true
   },
@@ -626,10 +694,6 @@
   },
   {
     "type": "string",
-    "named": true
-  },
-  {
-    "type": "valuetag",
     "named": true
   }
 ]

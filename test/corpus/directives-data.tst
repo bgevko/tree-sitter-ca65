@@ -12,13 +12,27 @@ segments and storage
 ---
 
 (source_file
-  (directive (directive_name) (string))
-  (directive (directive_name))
-  (directive (directive_name))
-  (directive (directive_name))
-  (directive (directive_name))
-  (directive (directive_name))
-  (directive (directive_name) (number) (separator) (base) (number)))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (string)))
+  (directive
+    (directive_name))
+  (directive
+    (directive_name))
+  (directive
+    (directive_name))
+  (directive
+    (directive_name))
+  (directive
+    (directive_name))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (number)
+      (separator)
+      (base)
+      (number))))
 
 ====================
 data emission directives
@@ -35,14 +49,48 @@ data emission directives
 ---
 
 (source_file
-  (directive (directive_name) (string) (separator) (base) (number) (separator) (base) (number))
-  (directive (directive_name) (string))
-  (directive (directive_name) (base) (number) (separator) (identifier))
-  (directive (directive_name) (identifier))
-  (directive (directive_name) (identifier))
-  (directive (directive_name) (base) (number))
-  (directive (directive_name) (string))
-  (directive (directive_name) (string)))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (string)
+      (separator)
+      (base)
+      (number)
+      (separator)
+      (base)
+      (number)))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (string)))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (base)
+      (number)
+      (separator)
+      (identifier)))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (identifier)))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (identifier)))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (base)
+      (number)))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (string)))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (string))))
 
 ====================
 linkage and includes
@@ -57,9 +105,29 @@ linkage and includes
 ---
 
 (source_file
-  (directive (directive_name) (string))
-  (directive (directive_name) (string))
-  (directive (directive_name) (identifier) (separator) (identifier))
-  (directive (directive_name) (identifier))
-  (directive (directive_name) (identifier))
-  (directive (directive_name) (identifier)))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (string)))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (string)))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (identifier)
+      (separator)
+      (identifier)))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (identifier)))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (identifier)))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (identifier))))

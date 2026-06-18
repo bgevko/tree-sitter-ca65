@@ -17,12 +17,20 @@ done:
     (macrostart)
     (identifier)
     (identifier)
-    (directive (directive_name) (identifier))
-    (mnemonic)
-    (label (identifier))
-    (mnemonic)
+    (directive
+      (directive_name)
+      (directive_arguments
+        (identifier)))
+    (instruction
+      (mnemonic))
+    (label
+      (identifier))
+    (instruction
+      (mnemonic))
     (macroend))
-  (generic_line (identifier) (register)))
+  (generic_line
+    (identifier)
+    (register)))
 
 ====================
 conditional assembly
@@ -38,13 +46,42 @@ conditional assembly
 ---
 
 (source_file
-  (directive (directive_name) (directive_name) (bracket) (identifier) (bracket))
-  (mnemonic) (operand (value (valuetag) (number)))
-  (directive (directive_name) (directive_name) (bracket) (identifier) (bracket))
-  (mnemonic) (operand (value (valuetag) (number)))
-  (directive (directive_name))
-  (mnemonic) (operand (value (valuetag) (number)))
-  (directive (directive_name)))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (directive_name)
+      (bracket)
+      (identifier)
+      (bracket)))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (number))))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (directive_name)
+      (bracket)
+      (identifier)
+      (bracket)))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (number))))
+  (directive
+    (directive_name))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (number))))
+  (directive
+    (directive_name)))
 
 ====================
 repeat control
@@ -56,6 +93,15 @@ repeat control
 ---
 
 (source_file
-  (directive (directive_name) (number) (separator) (identifier))
-  (directive (directive_name) (identifier))
-  (directive (directive_name)))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (number)
+      (separator)
+      (identifier)))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (identifier)))
+  (directive
+    (directive_name)))

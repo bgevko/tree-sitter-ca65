@@ -4,53 +4,61 @@ operand number dec
   lda   #12
 
 ---
+
 (source_file
-  (mnemonic)
-  (operand
-    (value
-      (valuetag)
-      (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (number)))))
 
 ===================
 operand number bin
-====================
+===================
   lda   #%01010100
 
 ---
+
 (source_file
-  (mnemonic)
-  (operand
-    (value
-      (valuetag)
-      (base)
-      (number))))
- 
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (base)
+        (number)))))
+
 ====================
 operand number hex
 ====================
   lda   #$BEEF
 
 ---
+
 (source_file
-  (mnemonic)
-  (operand
-    (value
-      (valuetag)
-      (base)
-      (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (base)
+        (number)))))
 
 ====================
-operand addr 
+operand addr
 ====================
   lda   $DEAD
 
 ---
+
 (source_file
-  (mnemonic)
-  (operand
-    (mem_address
-      (base)
-      (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (base)
+        (number)))))
 
 ====================
 operand char
@@ -58,21 +66,25 @@ operand char
   lda   'c'
 
 ---
+
 (source_file
-  (mnemonic)
-  (operand
-    (char)))
+  (instruction
+    (mnemonic)
+    (operand
+      (char))))
 
 ====================
-operand register 
+operand register
 ====================
   rol   a   
 
 ---
+
 (source_file
-  (mnemonic)
-  (operand
-    (register)))
+  (instruction
+    (mnemonic)
+    (operand
+      (register))))
 
 ====================
 operand addr register
@@ -80,14 +92,16 @@ operand addr register
   lda   $DEAD,x
 
 ---
+
 (source_file
-  (mnemonic)
-  (operand
-    (mem_address
-      (base)
-      (number)
-      (separator)
-      (register))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (base)
+        (number)
+        (separator)
+        (register)))))
 
 ====================
 operand sep register
@@ -95,13 +109,15 @@ operand sep register
   sta   data, y
 
 ---
+
 (source_file
-  (mnemonic)
-  (operand
-    (mem_address
-      (identifier)
-      (separator)
-      (register))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (identifier)
+        (separator)
+        (register)))))
 
 ===================
 operand addr hi/lo
@@ -110,20 +126,23 @@ operand addr hi/lo
   sta   #<(data)
 
 ---
+
 (source_file
-  (mnemonic)
-  (operand
-    (value
-      (valuetag)
-      (operator)
-      (bracket)
-      (identifier)
-      (bracket)))
-  (mnemonic)
-  (operand
-    (value
-      (valuetag)
-      (operator)
-      (bracket)
-      (identifier)
-      (bracket))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (operator)
+        (bracket)
+        (identifier)
+        (bracket))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (operator)
+        (bracket)
+        (identifier)
+        (bracket)))))

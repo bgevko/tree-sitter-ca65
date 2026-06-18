@@ -37,3 +37,4 @@
 
 - Broad CA65 parser and highlight coverage now passes.
 - Remaining work should focus on deeper semantic modeling and richer node names, not basic parser smoke coverage.
+- Grammar precision pass 1 complete: public nodes now use clearer directive/immediate/address/instruction names and expose fields for directive names, instruction mnemonics/operands, labels, proc names, and macro parameters.

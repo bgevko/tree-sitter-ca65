@@ -13,14 +13,31 @@ global:
 ---
 
 (source_file
-  (label (identifier))
-  (label (local_identifier))
-  (mnemonic) (operand (mem_address (local_identifier)))
-  (label (unnamed_label))
-  (mnemonic) (operand (mem_address (unnamed_label_ref)))
-  (mnemonic) (operand (mem_address (unnamed_label_ref)))
-  (label (unnamed_label))
-  (mnemonic))
+  (label
+    (identifier))
+  (label
+    (local_identifier))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (local_identifier))))
+  (label
+    (unnamed_label))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (unnamed_label_ref))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (unnamed_label_ref))))
+  (label
+    (unnamed_label))
+  (instruction
+    (mnemonic)))
 
 ====================
 scope and proc blocks
@@ -37,20 +54,32 @@ scope and proc blocks
 ---
 
 (source_file
-  (directive (directive_name) (identifier))
-  (label (identifier))
-  (mnemonic) (operand (value (valuetag) (base) (number)))
-  (directive (directive_name))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (identifier)))
+  (label
+    (identifier))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (base)
+        (number))))
+  (directive
+    (directive_name))
   (proc
     (procstart)
     (identifier)
-    (mnemonic)
-    (operand
-      (mem_address
-        (identifier)
-        (operator)
-        (operator)
-        (identifier)))
+    (instruction
+      (mnemonic)
+      (operand
+        (address_expression
+          (identifier)
+          (operator)
+          (operator)
+          (identifier))))
     (procend)))
 
 ====================
@@ -64,7 +93,21 @@ io := $d000
 ---
 
 (source_file
-  (equ (identifier) (equal) (anything))
-  (equ (identifier) (equal) (anything))
-  (directive_line (identifier) (directive_name) (number))
-  (directive_line (label (identifier)) (operator) (base) (number)))
+  (equ
+    (identifier)
+    (equal)
+    (anything))
+  (equ
+    (identifier)
+    (equal)
+    (anything))
+  (directive_line
+    (identifier)
+    (directive_name)
+    (number))
+  (directive_line
+    (label
+      (identifier))
+    (operator)
+    (base)
+    (number)))

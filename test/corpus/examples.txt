@@ -13,18 +13,22 @@ reset:
 (source_file
   (directive
     (directive_name)
-    (string))
+    (directive_arguments
+      (string)))
   (label
     (identifier))
-  (mnemonic)
-  (operand
-    (value
-      (valuetag)
-      (base)
-      (number)))
-  (mnemonic)
-  (operand
-    (mem_address
-      (base)
-      (number)))
-  (mnemonic))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (base)
+        (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (base)
+        (number))))
+  (instruction
+    (mnemonic)))

@@ -5,13 +5,15 @@ label1:
   jmp   label1
 
 ---
+
 (source_file
   (label
     (identifier))
-  (mnemonic)
-  (operand
-    (mem_address
-      (identifier))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (identifier)))))
 
 =================
 label local
@@ -20,14 +22,16 @@ label local
   lda   #02
 
 ---
+
 (source_file
   (label
     (local_identifier))
-  (mnemonic)
-  (operand
-    (value
-      (valuetag)
-      (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (number)))))
 
 =================
 label unnamed -
@@ -36,13 +40,15 @@ label unnamed -
   jmp   :-
 
 ---
+
 (source_file
   (label
     (unnamed_label))
-  (mnemonic)
-  (operand
-    (mem_address
-      (unnamed_label_ref))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (unnamed_label_ref)))))
 
 =================
 label unnamed +
@@ -51,18 +57,21 @@ label unnamed +
 : lda   #02
 
 ---
+
 (source_file
-  (mnemonic)
-  (operand
-    (mem_address
-      (unnamed_label_ref)))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (unnamed_label_ref))))
   (label
     (unnamed_label))
-  (mnemonic)
-  (operand
-    (value
-      (valuetag)
-      (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (number)))))
 
 =================
 label unnamed +++
@@ -70,23 +79,27 @@ label unnamed +++
   jmp   :+++
 
 ---
+
 (source_file
-  (mnemonic)
-  (operand
-    (mem_address
-      (unnamed_label_ref))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (unnamed_label_ref)))))
 
 =================
-label unnamed -- 
+label unnamed --
 =================
   jmp   :--
 
 ---
+
 (source_file
-  (mnemonic)
-  (operand
-    (mem_address
-      (unnamed_label_ref))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (unnamed_label_ref)))))
 
 =================
 label same line
@@ -95,18 +108,21 @@ label:lda #02
 label2: lda #03
 
 ---
+
 (source_file
   (label
     (identifier))
-  (mnemonic)
-  (operand
-    (value
-      (valuetag)
-      (number)))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (number))))
   (label
     (identifier))
-  (mnemonic)
-  (operand
-    (value
-       (valuetag)
-       (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (number)))))

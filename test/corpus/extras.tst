@@ -5,13 +5,15 @@ comments
   lda   $02 ;another comment
 
 ---
+
 (source_file
   (comment)
-  (mnemonic)
-  (operand
-    (mem_address
-      (base)
-      (number)))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (base)
+        (number))))
   (comment))
 
 ====================
@@ -31,12 +33,13 @@ lda #$00
 ---
 
 (source_file
-  (mnemonic)
-  (operand
-    (value
-      (valuetag)
-      (base)
-      (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (base)
+        (number)))))
 
 ====================
 directive requires dot
@@ -59,4 +62,5 @@ string stays visible
 (source_file
   (directive
     (directive_name)
-    (string)))
+    (directive_arguments
+      (string))))

@@ -11,11 +11,12 @@ macro no arg
   (macro
     (macrostart)
     (identifier)
-    (mnemonic)
-    (operand
-      (value
-        (valuetag)
-        (number)))
+    (instruction
+      (mnemonic)
+      (operand
+        (immediate
+          (immediate_marker)
+          (number))))
     (macroend)))
 
 ============
@@ -35,14 +36,16 @@ macro args
     (identifier)
     (separator)
     (identifier)
-    (mnemonic)
-    (operand
-      (mem_address
-        (identifier)))
-    (mnemonic)
-    (operand
-      (mem_address
-        (identifier)))
+    (instruction
+      (mnemonic)
+      (operand
+        (address_expression
+          (identifier))))
+    (instruction
+      (mnemonic)
+      (operand
+        (address_expression
+          (identifier))))
     (macroend)))
 
 ============
@@ -58,9 +61,10 @@ macro short
   (macro
     (macrostart)
     (identifier)
-    (mnemonic)
-    (operand
-      (value
-        (valuetag)
-        (number)))
+    (instruction
+      (mnemonic)
+      (operand
+        (immediate
+          (immediate_marker)
+          (number))))
     (macroend)))

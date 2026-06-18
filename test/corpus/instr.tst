@@ -4,12 +4,14 @@ instr base
   lda     #04
 
 ---
+
 (source_file
-  (mnemonic)
-  (operand
-    (value
-      (valuetag)
-      (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (number)))))
 
 ================
 instr wdc
@@ -17,12 +19,14 @@ instr wdc
   bra     $0463
 
 ---
+
 (source_file
-  (mnemonic)
-  (operand
-    (mem_address
-      (base)
-      (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (base)
+        (number)))))
 
 ================
 instr rockwell
@@ -31,9 +35,12 @@ instr rockwell
   smb7
 
 ---
+
 (source_file
-  (mnemonic)
-  (mnemonic))
+  (instruction
+    (mnemonic))
+  (instruction
+    (mnemonic)))
 
 ================
 instr macpack
@@ -41,12 +48,14 @@ instr macpack
   jmi   $5ab0
 
 ---
+
 (source_file
-  (mnemonic)
-  (operand
-    (mem_address
-      (base)
-      (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (base)
+        (number)))))
 
 ================
 instr illegal
@@ -55,7 +64,9 @@ instr illegal
   alr
 
 ---
-(source_file
-  (mnemonic)
-  (mnemonic))
 
+(source_file
+  (instruction
+    (mnemonic))
+  (instruction
+    (mnemonic)))

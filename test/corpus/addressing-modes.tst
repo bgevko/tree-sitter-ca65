@@ -8,11 +8,14 @@ implied and accumulator
 ---
 
 (source_file
-  (mnemonic)
-  (mnemonic)
-  (mnemonic)
-  (operand
-    (register)))
+  (instruction
+    (mnemonic))
+  (instruction
+    (mnemonic))
+  (instruction
+    (mnemonic)
+    (operand
+      (register))))
 
 ====================
 immediate number forms
@@ -25,28 +28,32 @@ immediate number forms
 ---
 
 (source_file
-  (mnemonic)
-  (operand
-    (value
-      (valuetag)
-      (number)))
-  (mnemonic)
-  (operand
-    (value
-      (valuetag)
-      (base)
-      (number)))
-  (mnemonic)
-  (operand
-    (value
-      (valuetag)
-      (base)
-      (number)))
-  (mnemonic)
-  (operand
-    (value
-      (valuetag)
-      (char))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (base)
+        (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (base)
+        (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (char)))))
 
 ====================
 absolute and indexed
@@ -60,37 +67,42 @@ absolute and indexed
 ---
 
 (source_file
-  (mnemonic)
-  (operand
-    (mem_address
-      (base)
-      (number)))
-  (mnemonic)
-  (operand
-    (mem_address
-      (base)
-      (number)
-      (separator)
-      (register)))
-  (mnemonic)
-  (operand
-    (mem_address
-      (base)
-      (number)
-      (separator)
-      (register)))
-  (mnemonic)
-  (operand
-    (mem_address
-      (identifier)
-      (separator)
-      (register)))
-  (mnemonic)
-  (operand
-    (mem_address
-      (identifier)
-      (separator)
-      (register))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (base)
+        (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (base)
+        (number)
+        (separator)
+        (register))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (base)
+        (number)
+        (separator)
+        (register))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (identifier)
+        (separator)
+        (register))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (identifier)
+        (separator)
+        (register)))))
 
 ====================
 indirect modes
@@ -102,31 +114,34 @@ indirect modes
 ---
 
 (source_file
-  (mnemonic)
-  (operand
-    (mem_address
-      (bracket)
-      (base)
-      (number)
-      (bracket)))
-  (mnemonic)
-  (operand
-    (mem_address
-      (bracket)
-      (base)
-      (number)
-      (separator)
-      (register)
-      (bracket)))
-  (mnemonic)
-  (operand
-    (mem_address
-      (bracket)
-      (base)
-      (number)
-      (bracket)
-      (separator)
-      (register))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (bracket)
+        (base)
+        (number)
+        (bracket))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (bracket)
+        (base)
+        (number)
+        (separator)
+        (register)
+        (bracket))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (bracket)
+        (base)
+        (number)
+        (bracket)
+        (separator)
+        (register)))))
 
 ====================
 address size prefixes
@@ -138,21 +153,24 @@ address size prefixes
 ---
 
 (source_file
-  (mnemonic)
-  (operand
-    (mem_address
-      (register)
-      (operator)
-      (base)
-      (number)))
-  (mnemonic)
-  (operand
-    (mem_address
-      (identifier)
-      (operator)
-      (base)
-      (number)))
-  (mnemonic)
-  (operand
-    (mem_address
-      (identifier))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (register)
+        (operator)
+        (base)
+        (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (identifier)
+        (operator)
+        (base)
+        (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (identifier)))))

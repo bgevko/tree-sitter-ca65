@@ -4,12 +4,14 @@
 .define EQUTEST $8B41
 
 ---
+
 (source_file
   (directive
     (directive_name)
-    (identifier)
-    (base)
-    (number)))
+    (directive_arguments
+      (identifier)
+      (base)
+      (number))))
 
 ================
 equal
@@ -17,6 +19,7 @@ equal
 EQUTEST = $01A1
 
 ---
+
 (source_file
   (equ
     (identifier)
@@ -29,16 +32,18 @@ EQUTEST = $01A1
 .define EQUTEST ($8B41+1)
 
 ---
+
 (source_file
   (directive
     (directive_name)
-    (identifier)
-    (bracket)
-    (base)
-    (number)
-    (operator)
-    (number)
-    (bracket)))
+    (directive_arguments
+      (identifier)
+      (bracket)
+      (base)
+      (number)
+      (operator)
+      (number)
+      (bracket))))
 
 ================
 equal ()
@@ -46,10 +51,9 @@ equal ()
 EQUTEST = ($01A1+CONST)
 
 ---
+
 (source_file
   (equ
     (identifier)
     (equal)
     (anything)))
-
-

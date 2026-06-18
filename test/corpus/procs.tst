@@ -11,11 +11,12 @@ proc base
   (proc
     (procstart)
     (identifier)
-    (mnemonic)
-    (operand
-      (value
-        (valuetag)
-        (number)))
+    (instruction
+      (mnemonic)
+      (operand
+        (immediate
+          (immediate_marker)
+          (number))))
     (procend)))
 
 =====================
@@ -31,10 +32,11 @@ proc near
   (proc
     (procstart)
     (identifier)
-    (mnemonic)
-    (operand
-      (value
-        (valuetag)
-        (base)
-        (number)))
+    (instruction
+      (mnemonic)
+      (operand
+        (immediate
+          (immediate_marker)
+          (base)
+          (number))))
     (procend)))

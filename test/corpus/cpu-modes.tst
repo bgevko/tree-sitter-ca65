@@ -11,12 +11,22 @@ processor mode directives
 ---
 
 (source_file
-  (directive (directive_name))
-  (directive (directive_name))
-  (directive (directive_name))
-  (directive (directive_name))
-  (directive (directive_name) (string))
-  (directive (directive_name) (string)))
+  (directive
+    (directive_name))
+  (directive
+    (directive_name))
+  (directive
+    (directive_name))
+  (directive
+    (directive_name))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (string)))
+  (directive
+    (directive_name)
+    (directive_arguments
+      (string))))
 
 ====================
 extended mnemonics
@@ -31,9 +41,25 @@ extended mnemonics
 ---
 
 (source_file
-  (mnemonic) (operand (mem_address (identifier)))
-  (mnemonic) (operand (mem_address (base) (number)))
-  (mnemonic)
-  (mnemonic)
-  (mnemonic) (operand (mem_address (identifier)))
-  (mnemonic))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (identifier))))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (base)
+        (number))))
+  (instruction
+    (mnemonic))
+  (instruction
+    (mnemonic))
+  (instruction
+    (mnemonic)
+    (operand
+      (address_expression
+        (identifier))))
+  (instruction
+    (mnemonic)))

@@ -4,7 +4,7 @@
 (macrostart) @keyword
 (macroend) @keyword
 
-(proc proc_name: (identifier) @function)
+(proc name: (identifier) @function)
 
 (mnemonic) @function.builtin
 
@@ -13,8 +13,8 @@
 (equ value: (anything) @constant)
 
 (base) @type
-(value) @variable
-(mem_address) @variable
+(immediate) @variable
+(address_expression) @variable
 (register) @constant.builtin
 
 (string) @string
@@ -28,4 +28,4 @@
 (operator) @operator
 (separator) @punctuation.delimiter
 (bracket) @punctuation.bracket
-(valuetag) @punctuation.delimiter 
+(immediate_marker) @punctuation.delimiter 

@@ -9,10 +9,32 @@ numeric formats
 ---
 
 (source_file
-  (mnemonic) (operand (value (valuetag) (number)))
-  (mnemonic) (operand (value (valuetag) (base) (number)))
-  (mnemonic) (operand (value (valuetag) (base) (number)))
-  (mnemonic) (operand (value (valuetag) (char))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (base)
+        (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (base)
+        (number))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (char)))))
 
 ====================
 unary byte operators
@@ -24,9 +46,27 @@ unary byte operators
 ---
 
 (source_file
-  (mnemonic) (operand (value (valuetag) (operator) (identifier)))
-  (mnemonic) (operand (value (valuetag) (operator) (identifier)))
-  (mnemonic) (operand (value (valuetag) (operator) (identifier))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (operator)
+        (identifier))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (operator)
+        (identifier))))
+  (instruction
+    (mnemonic)
+    (operand
+      (immediate
+        (immediate_marker)
+        (operator)
+        (identifier)))))
 
 ====================
 binary operators
@@ -40,11 +80,26 @@ binary operators
 ---
 
 (source_file
-  (equ (identifier) (equal) (anything))
-  (equ (identifier) (equal) (anything))
-  (equ (identifier) (equal) (anything))
-  (equ (identifier) (equal) (anything))
-  (equ (identifier) (equal) (anything)))
+  (equ
+    (identifier)
+    (equal)
+    (anything))
+  (equ
+    (identifier)
+    (equal)
+    (anything))
+  (equ
+    (identifier)
+    (equal)
+    (anything))
+  (equ
+    (identifier)
+    (equal)
+    (anything))
+  (equ
+    (identifier)
+    (equal)
+    (anything)))
 
 ====================
 pseudo variables and functions
@@ -59,9 +114,27 @@ pseudo variables and functions
 ---
 
 (source_file
-  (equ (identifier) (equal) (anything))
-  (equ (identifier) (equal) (anything))
-  (equ (identifier) (equal) (anything))
-  (equ (identifier) (equal) (anything))
-  (equ (identifier) (equal) (anything))
-  (equ (identifier) (equal) (anything)))
+  (equ
+    (identifier)
+    (equal)
+    (anything))
+  (equ
+    (identifier)
+    (equal)
+    (anything))
+  (equ
+    (identifier)
+    (equal)
+    (anything))
+  (equ
+    (identifier)
+    (equal)
+    (anything))
+  (equ
+    (identifier)
+    (equal)
+    (anything))
+  (equ
+    (identifier)
+    (equal)
+    (anything)))

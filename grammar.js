@@ -30,8 +30,9 @@ module.exports = grammar({
   name: 'ca65',
 
   conflicts: $ => [
-    [$.operand, $.mem_address],
+    [$.operand, $.address_expression],
     [$.directive, $.directive_line],
+    [$._directive_argument, $.directive_line],
     [$.generic_line],
   ],
 
@@ -66,20 +67,17 @@ module.exports = grammar({
 
     _statement: $ => choice(
       $.label,
-      prec.right(1, seq(
-        $.mnemonic,
-        optional(
-          $.operand
-        )
-      )),
+      $.instruction,
       prec(1, seq(
         $.label,
-        $.mnemonic,
-        optional(
-          $.operand
-        )
+        $.instruction
       ))
     ),
+
+    instruction: $ => prec.right(1, seq(
+      field('mnemonic', $.mnemonic),
+      optional(field('operand', $.operand))
+    )),
 
     mnemonic: $ => token(choice(
       ...ca65mnemonic,
@@ -90,14 +88,14 @@ module.exports = grammar({
     )),
 
     operand: $ => choice(
-      $.mem_address,
-      $.value,
+      $.address_expression,
+      $.immediate,
       $.string,
       $.char,
       $.register
     ),
 
-    mem_address: $ => choice(
+    address_expression: $ => choice(
       $.unnamed_label_ref,
       prec.left(repeat1(
         choice(
@@ -124,7 +122,7 @@ module.exports = grammar({
     procend: $ => token(choice('.endproc', '.ENDPROC')),
     proc: $ => seq(
       $.procstart,
-      field("proc_name", $.identifier),
+      field('name', $.identifier),
       optional(
         seq(
           ':',
@@ -139,26 +137,28 @@ module.exports = grammar({
     macroend: $ => token(choice('.endmacro', '.endmac', '.ENDMACRO', '.ENDMAC')),
     macro: $ => prec(1, seq(
       $.macrostart, 
-      $.identifier,
-      repeatSep($.identifier, $.separator),
+      field('name', $.identifier),
+      repeatSep(field('parameter', $.identifier), $.separator),
       repeat(choice($._newline, seq($._block_item, $._newline))),
       $.macroend
     )),
 
     directive: $ => seq(
+      field('name', $.directive_name),
+      optional($.directive_arguments)
+    ),
+
+    directive_arguments: $ => repeat1($._directive_argument),
+
+    _directive_argument: $ => choice(
       $.directive_name,
-      repeat(
-        choice(
-          $.directive_name,
-          $.number,
-          $.string,
-          $.identifier,
-          $.base,
-          $.operator,
-          $.bracket,
-          $.separator
-        )
-      )
+      $.number,
+      $.string,
+      $.identifier,
+      $.base,
+      $.operator,
+      $.bracket,
+      $.separator
     ),
 
     directive_line: $ => seq(
@@ -210,8 +210,8 @@ module.exports = grammar({
       )
     ),
 
-    value: $ => seq(
-      $.valuetag,
+    immediate: $ => seq(
+      $.immediate_marker,
       repeat1(
         choice(
           $.base,
@@ -243,11 +243,11 @@ module.exports = grammar({
 
     separator: $ => token(','),
 
-    valuetag: $ => token('#'),
+    immediate_marker: $ => token('#'),
     equal: $ => token('='),
     anything: $ => /.+/,
     label: $ => choice(
-      prec(1, seq(choice($.identifier, $.local_identifier), ':')),
+      prec(1, seq(field('name', choice($.identifier, $.local_identifier)), ':')),
       $.unnamed_label
     ),
     unnamed_label: $ => ':',

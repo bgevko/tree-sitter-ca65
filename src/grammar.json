@@ -106,29 +106,8 @@
           "name": "label"
         },
         {
-          "type": "PREC_RIGHT",
-          "value": 1,
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "mnemonic"
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "operand"
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
-              }
-            ]
-          }
+          "type": "SYMBOL",
+          "name": "instruction"
         },
         {
           "type": "PREC",
@@ -142,24 +121,45 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "mnemonic"
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "operand"
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
+                "name": "instruction"
               }
             ]
           }
         }
       ]
+    },
+    "instruction": {
+      "type": "PREC_RIGHT",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "mnemonic",
+            "content": {
+              "type": "SYMBOL",
+              "name": "mnemonic"
+            }
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "operand",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "operand"
+                }
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
     },
     "mnemonic": {
       "type": "TOKEN",
@@ -1190,11 +1190,11 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "mem_address"
+          "name": "address_expression"
         },
         {
           "type": "SYMBOL",
-          "name": "value"
+          "name": "immediate"
         },
         {
           "type": "SYMBOL",
@@ -1210,7 +1210,7 @@
         }
       ]
     },
-    "mem_address": {
+    "address_expression": {
       "type": "CHOICE",
       "members": [
         {
@@ -1337,7 +1337,7 @@
         },
         {
           "type": "FIELD",
-          "name": "proc_name",
+          "name": "name",
           "content": {
             "type": "SYMBOL",
             "name": "identifier"
@@ -1479,8 +1479,12 @@
             "name": "macrostart"
           },
           {
-            "type": "SYMBOL",
-            "name": "identifier"
+            "type": "FIELD",
+            "name": "name",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            }
           },
           {
             "type": "CHOICE",
@@ -1489,8 +1493,12 @@
                 "type": "SEQ",
                 "members": [
                   {
-                    "type": "SYMBOL",
-                    "name": "identifier"
+                    "type": "FIELD",
+                    "name": "parameter",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "identifier"
+                    }
                   },
                   {
                     "type": "REPEAT",
@@ -1502,8 +1510,12 @@
                           "name": "separator"
                         },
                         {
-                          "type": "SYMBOL",
-                          "name": "identifier"
+                          "type": "FIELD",
+                          "name": "parameter",
+                          "content": {
+                            "type": "SYMBOL",
+                            "name": "identifier"
+                          }
                         }
                       ]
                     }
@@ -1551,48 +1563,68 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "directive_name"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "directive_arguments"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "directive_arguments": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_directive_argument"
+      }
+    },
+    "_directive_argument": {
+      "type": "CHOICE",
+      "members": [
+        {
           "type": "SYMBOL",
           "name": "directive_name"
         },
         {
-          "type": "REPEAT",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "directive_name"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "number"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "string"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "identifier"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "base"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "operator"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "bracket"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "separator"
-              }
-            ]
-          }
+          "type": "SYMBOL",
+          "name": "number"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "base"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "operator"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "bracket"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "separator"
         }
       ]
     },
@@ -1782,12 +1814,12 @@
         ]
       }
     },
-    "value": {
+    "immediate": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "valuetag"
+          "name": "immediate_marker"
         },
         {
           "type": "REPEAT1",
@@ -1946,7 +1978,7 @@
         "value": ","
       }
     },
-    "valuetag": {
+    "immediate_marker": {
       "type": "TOKEN",
       "content": {
         "type": "STRING",
@@ -1974,17 +2006,21 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "identifier"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "local_identifier"
-                  }
-                ]
+                "type": "FIELD",
+                "name": "name",
+                "content": {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "identifier"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "local_identifier"
+                    }
+                  ]
+                }
               },
               {
                 "type": "STRING",
@@ -2073,10 +2109,14 @@
   "conflicts": [
     [
       "operand",
-      "mem_address"
+      "address_expression"
     ],
     [
       "directive",
+      "directive_line"
+    ],
+    [
+      "_directive_argument",
       "directive_line"
     ],
     [
