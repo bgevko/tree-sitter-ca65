@@ -17,7 +17,7 @@ done:
     (macrostart)
     (identifier)
     (identifier)
-    (preprocgen (preproccmd) (identifier))
+    (directive (directive_name) (identifier))
     (mnemonic)
     (label (identifier))
     (mnemonic)
@@ -38,13 +38,13 @@ conditional assembly
 ---
 
 (source_file
-  (preprocgen (preproccmd) (preproccmd) (bracket) (identifier) (bracket))
+  (directive (directive_name) (directive_name) (bracket) (identifier) (bracket))
   (mnemonic) (operand (value (valuetag) (number)))
-  (preprocgen (preproccmd) (preproccmd) (bracket) (identifier) (bracket))
+  (directive (directive_name) (directive_name) (bracket) (identifier) (bracket))
   (mnemonic) (operand (value (valuetag) (number)))
-  (preprocgen (preproccmd))
+  (directive (directive_name))
   (mnemonic) (operand (value (valuetag) (number)))
-  (preprocgen (preproccmd)))
+  (directive (directive_name)))
 
 ====================
 repeat control
@@ -56,6 +56,6 @@ repeat control
 ---
 
 (source_file
-  (preprocgen (preproccmd) (number) (separator) (identifier))
-  (preprocgen (preproccmd) (identifier))
-  (preprocgen (preproccmd)))
+  (directive (directive_name) (number) (separator) (identifier))
+  (directive (directive_name) (identifier))
+  (directive (directive_name)))

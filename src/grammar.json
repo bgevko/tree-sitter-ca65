@@ -1547,12 +1547,12 @@
         ]
       }
     },
-    "preprocgen": {
+    "directive": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "preproccmd"
+          "name": "directive_name"
         },
         {
           "type": "REPEAT",
@@ -1561,7 +1561,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "preproccmd"
+                "name": "directive_name"
               },
               {
                 "type": "SYMBOL",
@@ -1621,7 +1621,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "preproccmd"
+              "name": "directive_name"
             },
             {
               "type": "SYMBOL",
@@ -1636,7 +1636,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "preproccmd"
+                "name": "directive_name"
               },
               {
                 "type": "SYMBOL",
@@ -1746,7 +1746,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "preprocgen"
+          "name": "directive"
         }
       ]
     },
@@ -2043,7 +2043,7 @@
       "type": "PATTERN",
       "value": "[a-zA-Z_][a-zA-Z0-9_]*"
     },
-    "preproccmd": {
+    "directive_name": {
       "type": "PATTERN",
       "value": "\\.[a-zA-Z_][a-zA-Z0-9_]*"
     },
@@ -2076,7 +2076,7 @@
       "mem_address"
     ],
     [
-      "preprocgen",
+      "directive",
       "directive_line"
     ],
     [

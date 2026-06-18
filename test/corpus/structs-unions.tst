@@ -9,10 +9,10 @@ struct definition
 ---
 
 (source_file
-  (preprocgen (preproccmd) (identifier))
-  (directive_line (identifier) (preproccmd))
-  (directive_line (identifier) (preproccmd))
-  (preprocgen (preproccmd)))
+  (directive (directive_name) (identifier))
+  (directive_line (identifier) (directive_name))
+  (directive_line (identifier) (directive_name))
+  (directive (directive_name)))
 
 ====================
 union and tag usage
@@ -27,11 +27,11 @@ item: .tag Value
 ---
 
 (source_file
-  (preprocgen (preproccmd) (identifier))
-  (directive_line (identifier) (preproccmd))
-  (directive_line (identifier) (preproccmd))
-  (preprocgen (preproccmd))
-  (directive_line (label (identifier)) (preproccmd) (identifier)))
+  (directive (directive_name) (identifier))
+  (directive_line (identifier) (directive_name))
+  (directive_line (identifier) (directive_name))
+  (directive (directive_name))
+  (directive_line (label (identifier)) (directive_name) (identifier)))
 
 ====================
 enum values
@@ -44,7 +44,7 @@ enum values
 ---
 
 (source_file
-  (preprocgen (preproccmd) (identifier))
+  (directive (directive_name) (identifier))
   (generic_line (identifier))
   (generic_line (identifier))
-  (preprocgen (preproccmd)))
+  (directive (directive_name)))

@@ -31,7 +31,7 @@ module.exports = grammar({
 
   conflicts: $ => [
     [$.operand, $.mem_address],
-    [$.preprocgen, $.directive_line],
+    [$.directive, $.directive_line],
     [$.generic_line],
   ],
 
@@ -145,11 +145,11 @@ module.exports = grammar({
       $.macroend
     )),
 
-    preprocgen: $ => seq(
-      $.preproccmd,
+    directive: $ => seq(
+      $.directive_name,
       repeat(
         choice(
-          $.preproccmd,
+          $.directive_name,
           $.number,
           $.string,
           $.identifier,
@@ -164,12 +164,12 @@ module.exports = grammar({
     directive_line: $ => seq(
       choice($.identifier, $.local_identifier, $.label),
       choice(
-        $.preproccmd,
+        $.directive_name,
         $.operator
       ),
       repeat(
         choice(
-          $.preproccmd,
+          $.directive_name,
           $.number,
           $.string,
           $.identifier,
@@ -201,7 +201,7 @@ module.exports = grammar({
     _preproc: $ => choice(
       $.proc,
       $.macro,
-      $.preprocgen
+      $.directive
     ),
 
     register: $ => token(
@@ -255,7 +255,7 @@ module.exports = grammar({
     number: $ => /[0-9a-fA-F]+/,
     local_identifier: $ => /@[a-zA-Z_][a-zA-Z0-9_]*/,
     identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
-    preproccmd: $ => /\.[a-zA-Z_][a-zA-Z0-9_]*/,
+    directive_name: $ => /\.[a-zA-Z_][a-zA-Z0-9_]*/,
     comment: $ => /;.*/,
     string: $ => /".*"/,
     char: $ => /\'.\'/,

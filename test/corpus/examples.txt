@@ -11,8 +11,8 @@ reset:
 ---
 
 (source_file
-  (preprocgen
-    (preproccmd)
+  (directive
+    (directive_name)
     (string))
   (label
     (identifier))

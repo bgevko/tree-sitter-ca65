@@ -1,4 +1,4 @@
-(preproccmd) @keyword
+(directive_name) @keyword
 (procstart) @keyword
 (procend) @keyword
 (macrostart) @keyword

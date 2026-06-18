@@ -12,13 +12,13 @@ segments and storage
 ---
 
 (source_file
-  (preprocgen (preproccmd) (string))
-  (preprocgen (preproccmd))
-  (preprocgen (preproccmd))
-  (preprocgen (preproccmd))
-  (preprocgen (preproccmd))
-  (preprocgen (preproccmd))
-  (preprocgen (preproccmd) (number) (separator) (base) (number)))
+  (directive (directive_name) (string))
+  (directive (directive_name))
+  (directive (directive_name))
+  (directive (directive_name))
+  (directive (directive_name))
+  (directive (directive_name))
+  (directive (directive_name) (number) (separator) (base) (number)))
 
 ====================
 data emission directives
@@ -35,14 +35,14 @@ data emission directives
 ---
 
 (source_file
-  (preprocgen (preproccmd) (string) (separator) (base) (number) (separator) (base) (number))
-  (preprocgen (preproccmd) (string))
-  (preprocgen (preproccmd) (base) (number) (separator) (identifier))
-  (preprocgen (preproccmd) (identifier))
-  (preprocgen (preproccmd) (identifier))
-  (preprocgen (preproccmd) (base) (number))
-  (preprocgen (preproccmd) (string))
-  (preprocgen (preproccmd) (string)))
+  (directive (directive_name) (string) (separator) (base) (number) (separator) (base) (number))
+  (directive (directive_name) (string))
+  (directive (directive_name) (base) (number) (separator) (identifier))
+  (directive (directive_name) (identifier))
+  (directive (directive_name) (identifier))
+  (directive (directive_name) (base) (number))
+  (directive (directive_name) (string))
+  (directive (directive_name) (string)))
 
 ====================
 linkage and includes
@@ -57,9 +57,9 @@ linkage and includes
 ---
 
 (source_file
-  (preprocgen (preproccmd) (string))
-  (preprocgen (preproccmd) (string))
-  (preprocgen (preproccmd) (identifier) (separator) (identifier))
-  (preprocgen (preproccmd) (identifier))
-  (preprocgen (preproccmd) (identifier))
-  (preprocgen (preproccmd) (identifier)))
+  (directive (directive_name) (string))
+  (directive (directive_name) (string))
+  (directive (directive_name) (identifier) (separator) (identifier))
+  (directive (directive_name) (identifier))
+  (directive (directive_name) (identifier))
+  (directive (directive_name) (identifier)))

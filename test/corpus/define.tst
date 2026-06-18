@@ -5,8 +5,8 @@
 
 ---
 (source_file
-  (preprocgen
-    (preproccmd)
+  (directive
+    (directive_name)
     (identifier)
     (base)
     (number)))
@@ -30,8 +30,8 @@ EQUTEST = $01A1
 
 ---
 (source_file
-  (preprocgen
-    (preproccmd)
+  (directive
+    (directive_name)
     (identifier)
     (bracket)
     (base)

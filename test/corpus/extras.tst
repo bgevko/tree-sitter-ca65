@@ -57,6 +57,6 @@ string stays visible
 ---
 
 (source_file
-  (preprocgen
-    (preproccmd)
+  (directive
+    (directive_name)
     (string)))

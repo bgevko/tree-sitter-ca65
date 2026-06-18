@@ -11,12 +11,12 @@ processor mode directives
 ---
 
 (source_file
-  (preprocgen (preproccmd))
-  (preprocgen (preproccmd))
-  (preprocgen (preproccmd))
-  (preprocgen (preproccmd))
-  (preprocgen (preproccmd) (string))
-  (preprocgen (preproccmd) (string)))
+  (directive (directive_name))
+  (directive (directive_name))
+  (directive (directive_name))
+  (directive (directive_name))
+  (directive (directive_name) (string))
+  (directive (directive_name) (string)))
 
 ====================
 extended mnemonics

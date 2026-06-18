@@ -37,10 +37,10 @@ scope and proc blocks
 ---
 
 (source_file
-  (preprocgen (preproccmd) (identifier))
+  (directive (directive_name) (identifier))
   (label (identifier))
   (mnemonic) (operand (value (valuetag) (base) (number)))
-  (preprocgen (preproccmd))
+  (directive (directive_name))
   (proc
     (procstart)
     (identifier)
@@ -66,5 +66,5 @@ io := $d000
 (source_file
   (equ (identifier) (equal) (anything))
   (equ (identifier) (equal) (anything))
-  (directive_line (identifier) (preproccmd) (number))
+  (directive_line (identifier) (directive_name) (number))
   (directive_line (label (identifier)) (operator) (base) (number)))
