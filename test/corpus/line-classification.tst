@@ -38,20 +38,18 @@ item: .tag Value
 ---
 
 (source_file
-  (directive
-    name: (directive_name)
-    (directive_arguments
-      (identifier)))
-  (directive_line
-    (symbol_directive
-      name: (identifier)
-      directive: (directive_name)))
-  (directive_line
-    (symbol_directive
-      name: (identifier)
-      directive: (directive_name)))
-  (directive
-    name: (directive_name))
+  (struct_definition
+    start: (struct_start
+      name: (identifier))
+    (directive_line
+      (symbol_directive
+        name: (identifier)
+        directive: (directive_name)))
+    (directive_line
+      (symbol_directive
+        name: (identifier)
+        directive: (directive_name)))
+    end: (struct_end))
   (directive_line
     (labeled_directive
       label: (label

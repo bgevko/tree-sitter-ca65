@@ -54,21 +54,19 @@ scope and proc blocks
 ---
 
 (source_file
-  (directive
-    (directive_name)
-    (directive_arguments
-      (identifier)))
-  (label
-    (identifier))
-  (instruction
-    (mnemonic)
-    (immediate_operand
-      (immediate
-        (immediate_marker)
-        (base)
-        (number))))
-  (directive
-    (directive_name))
+  (scope_definition
+    (scope_start
+      (identifier))
+    (label
+      (identifier))
+    (instruction
+      (mnemonic)
+      (immediate_operand
+        (immediate
+          (immediate_marker)
+          (base)
+          (number))))
+    (scope_end))
   (proc
     (procstart)
     (identifier)

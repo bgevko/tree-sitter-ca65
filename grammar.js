@@ -244,6 +244,35 @@ module.exports = grammar({
       $.procend
     ),
 
+    scope_start: $ => seq(token(choice('.scope', '.SCOPE')), field('name', $.identifier)),
+    scope_end: $ => token(choice('.endscope', '.ENDSCOPE')),
+
+    struct_start: $ => seq(token(choice('.struct', '.STRUCT')), optional(field('name', $.identifier))),
+    struct_end: $ => token(choice('.endstruct', '.ENDSTRUCT')),
+
+    union_start: $ => seq(token(choice('.union', '.UNION')), optional(field('name', $.identifier))),
+    union_end: $ => token(choice('.endunion', '.ENDUNION')),
+
+    enum_start: $ => seq(token(choice('.enum', '.ENUM')), optional(field('name', $.identifier))),
+    enum_end: $ => token(choice('.endenum', '.ENDENUM')),
+
+    repeat_start: $ => seq(token(choice('.repeat', '.REPEAT')), optional($.directive_arguments)),
+    repeat_end: $ => token(choice('.endrep', '.endrepeat', '.ENDREP', '.ENDREPEAT')),
+
+    if_start: $ => seq(
+      token(choice(
+        '.if', '.IF',
+        '.ifdef', '.IFDEF',
+        '.ifndef', '.IFNDEF',
+        '.ifblank', '.IFBLANK',
+        '.ifnblank', '.IFNBLANK'
+      )),
+      optional($.directive_arguments)
+    ),
+    elseif_branch: $ => seq(token(choice('.elseif', '.ELSEIF')), optional($.directive_arguments)),
+    else_branch: $ => token(choice('.else', '.ELSE')),
+    if_end: $ => token(choice('.endif', '.ENDIF')),
+
     macrostart: $ => token(choice('.macro', '.mac', '.MACRO', '.MAC')),
     macroend: $ => token(choice('.endmacro', '.endmac', '.ENDMACRO', '.ENDMAC')),
     macro: $ => prec(2, seq(
@@ -259,6 +288,53 @@ module.exports = grammar({
       field('parameter', $.identifier),
       repeat(seq($.separator, field('parameter', $.identifier)))
     )),
+
+    scope_definition: $ => seq(
+      field('start', $.scope_start),
+      $._newline,
+      repeat(choice($._newline, seq($._block_item, $._newline))),
+      field('end', $.scope_end)
+    ),
+
+    struct_definition: $ => seq(
+      field('start', $.struct_start),
+      $._newline,
+      repeat(choice($._newline, seq($._block_item, $._newline))),
+      field('end', $.struct_end)
+    ),
+
+    union_definition: $ => seq(
+      field('start', $.union_start),
+      $._newline,
+      repeat(choice($._newline, seq($._block_item, $._newline))),
+      field('end', $.union_end)
+    ),
+
+    enum_definition: $ => seq(
+      field('start', $.enum_start),
+      $._newline,
+      repeat(choice($._newline, seq($._block_item, $._newline))),
+      field('end', $.enum_end)
+    ),
+
+    repeat_block: $ => seq(
+      field('start', $.repeat_start),
+      $._newline,
+      repeat(choice($._newline, seq($._block_item, $._newline))),
+      field('end', $.repeat_end)
+    ),
+
+    conditional_block: $ => seq(
+      field('start', $.if_start),
+      $._newline,
+      repeat(choice($._newline, seq($._block_item, $._newline))),
+      repeat(seq(
+        field('branch', choice($.elseif_branch, $.else_branch)),
+        $._newline,
+        repeat(choice($._newline, seq($._block_item, $._newline)))
+      )),
+      field('end', $.if_end)
+    ),
 
     directive: $ => seq(
       field('name', $.directive_name),
@@ -347,6 +423,12 @@ module.exports = grammar({
     _preproc: $ => choice(
       $.proc,
       $.macro,
+      $.scope_definition,
+      $.struct_definition,
+      $.union_definition,
+      $.enum_definition,
+      $.repeat_block,
+      $.conditional_block,
       $.directive
     ),
 

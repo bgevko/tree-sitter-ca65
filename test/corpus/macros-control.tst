@@ -49,42 +49,39 @@ conditional assembly
 ---
 
 (source_file
-  (directive
-    (directive_name)
-    (directive_arguments
-      (directive_name)
-      (bracket)
-      (identifier)
-      (bracket)))
-  (instruction
-    (mnemonic)
-    (immediate_operand
-      (immediate
-        (immediate_marker)
-        (number))))
-  (directive
-    (directive_name)
-    (directive_arguments
-      (directive_name)
-      (bracket)
-      (identifier)
-      (bracket)))
-  (instruction
-    (mnemonic)
-    (immediate_operand
-      (immediate
-        (immediate_marker)
-        (number))))
-  (directive
-    (directive_name))
-  (instruction
-    (mnemonic)
-    (immediate_operand
-      (immediate
-        (immediate_marker)
-        (number))))
-  (directive
-    (directive_name)))
+  (conditional_block
+    (if_start
+      (directive_arguments
+        (directive_name)
+        (bracket)
+        (identifier)
+        (bracket)))
+    (instruction
+      (mnemonic)
+      (immediate_operand
+        (immediate
+          (immediate_marker)
+          (number))))
+    (elseif_branch
+      (directive_arguments
+        (directive_name)
+        (bracket)
+        (identifier)
+        (bracket)))
+    (instruction
+      (mnemonic)
+      (immediate_operand
+        (immediate
+          (immediate_marker)
+          (number))))
+    (else_branch)
+    (instruction
+      (mnemonic)
+      (immediate_operand
+        (immediate
+          (immediate_marker)
+          (number))))
+    (if_end)))
 
 ====================
 repeat control
@@ -96,15 +93,14 @@ repeat control
 ---
 
 (source_file
-  (directive
-    (directive_name)
-    (directive_arguments
-      (number)
-      (separator)
-      (identifier)))
-  (directive
-    (directive_name)
-    (directive_arguments
-      (identifier)))
-  (directive
-    (directive_name)))
+  (repeat_block
+    (repeat_start
+      (directive_arguments
+        (number)
+        (separator)
+        (identifier)))
+    (directive
+      (directive_name)
+      (directive_arguments
+        (identifier)))
+    (repeat_end)))

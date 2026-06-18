@@ -9,20 +9,18 @@ struct definition
 ---
 
 (source_file
-  (directive
-    (directive_name)
-    (directive_arguments
-      (identifier)))
-  (directive_line
-    (symbol_directive
-      (identifier)
-      (directive_name)))
-  (directive_line
-    (symbol_directive
-      (identifier)
-      (directive_name)))
-  (directive
-    (directive_name)))
+  (struct_definition
+    (struct_start
+      (identifier))
+    (directive_line
+      (symbol_directive
+        (identifier)
+        (directive_name)))
+    (directive_line
+      (symbol_directive
+        (identifier)
+        (directive_name)))
+    (struct_end)))
 
 ====================
 union and tag usage
@@ -37,20 +35,18 @@ item: .tag Value
 ---
 
 (source_file
-  (directive
-    (directive_name)
-    (directive_arguments
-      (identifier)))
-  (directive_line
-    (symbol_directive
-      (identifier)
-      (directive_name)))
-  (directive_line
-    (symbol_directive
-      (identifier)
-      (directive_name)))
-  (directive
-    (directive_name))
+  (union_definition
+    (union_start
+      (identifier))
+    (directive_line
+      (symbol_directive
+        (identifier)
+        (directive_name)))
+    (directive_line
+      (symbol_directive
+        (identifier)
+        (directive_name)))
+    (union_end))
   (directive_line
     (labeled_directive
       (label
@@ -70,15 +66,13 @@ enum values
 ---
 
 (source_file
-  (directive
-    (directive_name)
-    (directive_arguments
-      (identifier)))
-  (generic_line
-    (enum_member
-      (identifier)))
-  (generic_line
-    (enum_member
-      (identifier)))
-  (directive
-    (directive_name)))
+  (enum_definition
+    (enum_start
+      (identifier))
+    (generic_line
+      (enum_member
+        (identifier)))
+    (generic_line
+      (enum_member
+        (identifier)))
+    (enum_end)))
