@@ -133,16 +133,16 @@ operand addr hi/lo
     (immediate_operand
       (immediate
         (immediate_marker)
-        (operator)
-        (bracket)
-        (identifier)
-        (bracket))))
+        (unary_expression
+          (operator)
+          (parenthesized_expression
+            (identifier))))))
   (instruction
     (mnemonic)
     (immediate_operand
       (immediate
         (immediate_marker)
-        (operator)
-        (bracket)
-        (identifier)
-        (bracket)))))
+        (unary_expression
+          (operator)
+          (parenthesized_expression
+            (identifier)))))))

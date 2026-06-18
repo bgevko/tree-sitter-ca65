@@ -76,10 +76,9 @@ scope and proc blocks
       (mnemonic)
       (address_operand
         (address_expression
-          (identifier)
-          (operator)
-          (operator)
-          (identifier))))
+          (scoped_identifier
+            (identifier)
+            (identifier)))))
     (procend)))
 
 ====================

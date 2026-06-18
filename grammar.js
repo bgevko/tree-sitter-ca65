@@ -30,6 +30,9 @@ module.exports = grammar({
   name: 'ca65',
 
   conflicts: $ => [
+    [$.address_expression],
+    [$._expression, $.address_expression],
+    [$.parenthesized_expression, $.address_expression],
   ],
 
   extras: $ => [
@@ -135,8 +138,65 @@ module.exports = grammar({
 
     address_size_prefix: $ => token(choice('a:', 'f:', 'z:', 'A:', 'F:', 'Z:')),
 
+    _expression: $ => choice(
+      $.parenthesized_expression,
+      $.call_expression,
+      $.scoped_identifier,
+      $.unary_expression,
+      $.binary_expression,
+      $.identifier,
+      $.local_identifier,
+      $.number,
+      $.char
+    ),
+
+    parenthesized_expression: $ => seq(
+      '(',
+      $._expression,
+      ')'
+    ),
+
+    call_expression: $ => seq(
+      field('function', $.directive_name),
+      '(',
+      field('argument', $._expression),
+      ')'
+    ),
+
+    scoped_identifier: $ => seq(
+      field('scope', choice($.identifier, $.local_identifier)),
+      '::',
+      field('name', choice($.identifier, $.local_identifier))
+    ),
+
+    unary_expression: $ => prec(5, seq(
+      field('operator', $.operator),
+      field('argument', $._expression)
+    )),
+
+    binary_expression: $ => choice(
+      ...[
+        ['*', 4],
+        ['/', 4],
+        ['+', 3],
+        ['-', 3],
+        ['&', 2],
+        ['^', 1],
+        ['|', 0],
+      ].map(([operator, precedence]) =>
+        prec.left(precedence, seq(
+          field('left', $._expression),
+          field('operator', alias(operator, $.operator)),
+          field('right', $._expression)
+        ))
+      )
+    ),
+
     address_expression: $ => choice(
       $.unnamed_label_ref,
+      seq(optional($.address_size_prefix), $.base, $.number),
+      seq(optional($.address_size_prefix), $.scoped_identifier),
+      seq(optional($.address_size_prefix), $._expression),
       prec.left(repeat1(
         choice(
           $.base,
@@ -298,18 +358,9 @@ module.exports = grammar({
 
     immediate: $ => seq(
       $.immediate_marker,
-      repeat1(
-        choice(
-          $.base,
-          $.number,
-          $.identifier,
-          $.local_identifier,
-          $.char,
-          $.operator,
-          $.separator,
-          $.register,
-          $.bracket
-        )
+      choice(
+        seq($.base, $.number),
+        $._expression
       )
     ),
 

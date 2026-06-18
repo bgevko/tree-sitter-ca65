@@ -51,22 +51,25 @@ unary byte operators
     (immediate_operand
       (immediate
         (immediate_marker)
-        (operator)
-        (identifier))))
+        (unary_expression
+          (operator)
+          (identifier)))))
   (instruction
     (mnemonic)
     (immediate_operand
       (immediate
         (immediate_marker)
-        (operator)
-        (identifier))))
+        (unary_expression
+          (operator)
+          (identifier)))))
   (instruction
     (mnemonic)
     (immediate_operand
       (immediate
         (immediate_marker)
-        (operator)
-        (identifier)))))
+        (unary_expression
+          (operator)
+          (identifier))))))
 
 ====================
 binary operators

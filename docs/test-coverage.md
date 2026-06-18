@@ -40,3 +40,4 @@
 - Grammar precision pass 1 complete: public nodes now use clearer directive/immediate/address/instruction names and expose fields for directive names, instruction mnemonics/operands, labels, proc names, and macro parameters.
 - Grammar precision pass 2 complete: identifier-led and generic lines are now split into assignments, symbol directives, labeled directives, macro calls, and enum members, including ca65 macro-call argument separators and brace-grouped arguments.
 - Grammar precision pass 3 complete: operands now expose named immediate, accumulator, literal, address, indexed, indirect, indexed-indirect, and indirect-indexed syntax forms without claiming semantic zeropage/absolute resolution.
+- Grammar precision pass 4 complete: common CA65 expressions now expose unary, binary, parenthesized, scoped identifier, and pseudo-function call nodes while preserving loose fallback coverage.
