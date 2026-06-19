@@ -1088,6 +1088,10 @@
           },
           {
             "type": "STRING",
+            "value": "ane"
+          },
+          {
+            "type": "STRING",
             "value": "arr"
           },
           {
@@ -1101,6 +1105,10 @@
           {
             "type": "STRING",
             "value": "isc"
+          },
+          {
+            "type": "STRING",
+            "value": "jam"
           },
           {
             "type": "STRING",
@@ -1124,6 +1132,18 @@
           },
           {
             "type": "STRING",
+            "value": "sha"
+          },
+          {
+            "type": "STRING",
+            "value": "shx"
+          },
+          {
+            "type": "STRING",
+            "value": "shy"
+          },
+          {
+            "type": "STRING",
             "value": "slo"
           },
           {
@@ -1132,11 +1152,19 @@
           },
           {
             "type": "STRING",
+            "value": "tas"
+          },
+          {
+            "type": "STRING",
             "value": "ALR"
           },
           {
             "type": "STRING",
             "value": "ANC"
+          },
+          {
+            "type": "STRING",
+            "value": "ANE"
           },
           {
             "type": "STRING",
@@ -1153,6 +1181,10 @@
           {
             "type": "STRING",
             "value": "ISC"
+          },
+          {
+            "type": "STRING",
+            "value": "JAM"
           },
           {
             "type": "STRING",
@@ -1176,11 +1208,27 @@
           },
           {
             "type": "STRING",
+            "value": "SHA"
+          },
+          {
+            "type": "STRING",
+            "value": "SHX"
+          },
+          {
+            "type": "STRING",
+            "value": "SHY"
+          },
+          {
+            "type": "STRING",
             "value": "SLO"
           },
           {
             "type": "STRING",
             "value": "SRE"
+          },
+          {
+            "type": "STRING",
+            "value": "TAS"
           }
         ]
       }

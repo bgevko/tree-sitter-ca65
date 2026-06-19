@@ -62,10 +62,28 @@ instr illegal
 ================
   axs
   alr
+  ane
+  jam
+  sha
+  shx
+  shy
+  tas
 
 ---
 
 (source_file
+  (instruction
+    (mnemonic))
+  (instruction
+    (mnemonic))
+  (instruction
+    (mnemonic))
+  (instruction
+    (mnemonic))
+  (instruction
+    (mnemonic))
+  (instruction
+    (mnemonic))
   (instruction
     (mnemonic))
   (instruction

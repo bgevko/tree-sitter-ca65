@@ -16,8 +16,8 @@ const
    'ADD', 'SUB', 'BGE', 'BLT', 'BGT', 'BLE', 'BNZ', 'BZE', 'JEQ', 'JNE', 'JMI', 'JPL', 'JCS', 'JCC', 'JVS', 'JVC'
   ],
   ca65illegal = [
-    'alr', 'anc', 'arr', 'axs', 'dcp', 'isc', 'las', 'lax', 'rla', 'rra', 'sax', 'slo', 'sre',
-    'ALR', 'ANC', 'ARR', 'AXS', 'DCP', 'ISC', 'LAS', 'LAX', 'RLA', 'RRA', 'SAX', 'SLO', 'SRE'
+    'alr', 'anc', 'ane', 'arr', 'axs', 'dcp', 'isc', 'jam', 'las', 'lax', 'rla', 'rra', 'sax', 'sha', 'shx', 'shy', 'slo', 'sre', 'tas',
+    'ALR', 'ANC', 'ANE', 'ARR', 'AXS', 'DCP', 'ISC', 'JAM', 'LAS', 'LAX', 'RLA', 'RRA', 'SAX', 'SHA', 'SHX', 'SHY', 'SLO', 'SRE', 'TAS'
   ],
   operators = [
     '+', '-', '/', '*', '<', '>', '!', '|', '&', '^', '=', ':'
